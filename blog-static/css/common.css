@@ -1,0 +1,11 @@
+#custom-navbar .nav a{
+    margin-left: 10px;
+    font-size: 16px;
+}
+#custom-navbar .navbar-nav>.active>a{
+    background-color: transparent;
+    color:  #f65a8a;;
+}
+#custom-navbar .navbar-nav a:hover{
+    color: #f65a8a;
+}
