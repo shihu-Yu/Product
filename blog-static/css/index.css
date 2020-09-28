@@ -2,21 +2,10 @@
     width: 100%;
     height: 400px;
 }
+.main .custom-carousel{
+    margin-bottom: 10px;
+}
 #landing-wrap div{
     margin-bottom: 10px;
 }
-.main #ad{
-    padding: 0;
-}
-.main #ad img{
-    width: 100%;
-    height: 100%;
-    
-}
-.main .about-me img{
-    width: 100px;
-    height: 100px;
-}
-.main .subscript-me img{
-    width: 100%;
-}
+

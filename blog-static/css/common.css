@@ -5,6 +5,9 @@ a:hover{
     text-decoration: none;
     color:  #f65a8a;
 }
+.panel{
+    margin-bottom: 10px;
+}
 #custom-navbar .nav a{
     margin-left: 10px;
     font-size: 16px;
@@ -22,7 +25,7 @@ a:hover{
 .main .user-panel{
     background-color: #ffffff;
     padding: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 .user-panel .btn{
     width: 100%;
@@ -30,16 +33,27 @@ a:hover{
 .user-panel .switch{
     text-align: right;
 }
-.main .custom-panel{
-    margin-top: 20px;
-}
-.main .custom-panel .panel-heading{
-    background-color: #ffffff;
-    padding-top:0 ;
-    padding-bottom: 0;
+.ad .thumbnail{
+    margin-left: 15px;
     border: none;
+    padding: 0;
+    transition: all 0.3s;
 }
-.main .custom-panel .panel-heading h3{
+.ad .thumbnail:hover{
+    box-shadow: 3px 3px 3px rgba(0,0,0,0.3);
+}
+.ad .thumbnail img{
+    width: 100%;
+}
+.main .about-me img{
+    width: 100px;
+    height: 100px;
+}
+.main .subscript-me img{
+    width: 100%;
+}
+
+.main .panel .panel-heading h3{
     margin-top: 10px;
     font-size: 16px;
 }
@@ -58,8 +72,52 @@ a:hover{
     white-space: nowrap;
 }
 
-.main .custom-panel .panel-body .list-group a:hover{
+.custom-panel .panel-body .list-group a:hover{
     color: #f65a8a;
 }
 
 
+
+.main .panel .panel-heading{
+    background-color: #ffffff;
+    padding-top:0 ;
+    padding-bottom: 0;
+    border: none;
+}
+.article-panel .panel-heading{
+    margin-top: 10px;
+    cursor: pointer;
+}
+.article-panel .panel-heading a{
+    color: #333;
+}
+.panel-footer{
+    border: none ;
+    background-color: #ffffff;
+}
+.article-panel .panel-title{
+    border-left: 2px solid #f65a8a;
+    padding-left: 15px;
+    margin-left: -16px;
+}
+.article-panel:hover .panel-title{
+    color: #f65a8a;
+}
+.article-panel .footer-text{
+    margin-right: 10px;
+}
+.article-panel .footer-text .view-num{
+    font-style: italic;
+}
+#pagination a{
+    color: #777;
+
+}
+#pagination a:hover{
+    background-color: #fff;
+    color:#f65a8a ;
+}
+.footer{
+    text-align: center;
+    padding: 20px 0;
+}
