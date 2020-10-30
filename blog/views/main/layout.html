@@ -68,24 +68,24 @@
                         </div>
                     </div>
                     <!-- 注册显示页面 -->
-                    <div class="user-panel" id="register-wrap">
-                        <form class="form-horizontal">
+                    <div class="user-panel" style="display: none;" id="register-wrap">
+                        <div class="form-horizontal">
                             <div class="form-group">
-                                <label for="inputUsername" class="col-sm-4 control-label">用户名</label>
+                                <label for="regInputUsername" class="col-sm-4 control-label">用户名</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="inputUsername" placeholder="请输入用户名">
+                                    <input type="text" class="form-control" id="regInputUsername" placeholder="请输入用户名">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputPassword" class="col-sm-4 control-label">密码</label>
+                                <label for="regInputPassword" class="col-sm-4 control-label">密码</label>
                                 <div class="col-sm-6">
-                                    <input type="password" class="form-control" id="inputPassword" placeholder="请输入密码">
+                                    <input type="password" class="form-control" id="regInputPassword" placeholder="请输入密码">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputRepPassword" class="col-sm-4 control-label">重复密码</label>
+                                <label for="regInputRepPassword" class="col-sm-4 control-label">重复密码</label>
                                 <div class="col-sm-6">
-                                    <input type="password" class="form-control" id="inputRepPassword" placeholder="请输入密码">
+                                    <input type="password" class="form-control" id="regInputRepPassword" placeholder="请输入密码">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -102,11 +102,11 @@
                                 <div class="col-sm-8 switch text-danger">
                                 </div>
                             </div>
-                        </form>  
+                        </div>  
                     </div>
                     <!-- 登陆显示页面 -->
-                    <div class="user-panel" id="user-info-wrap">
-                        <form class="form-horizontal">
+                    <div class="user-panel" id="login-wrap">
+                        <div class="form-horizontal">
                             <div class="form-group">
                                 <label for="inputUsername" class="col-sm-4 control-label">用户名</label>
                                 <div class="col-sm-6">
@@ -126,7 +126,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-offset-4 col-sm-6 switch">
-                                    <a href="#">免费注册</a>
+                                    <a href="#" id="goto-register">免费注册</a>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -134,7 +134,7 @@
 
                                 </div>
                             </div>
-                        </form> 
+                        </div> 
                     </div>
                     <!-- 广告 -->
                     <div class="row ad hidden-xs hidden-md">
@@ -200,5 +200,6 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
 <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+<script src="js/common.js"></script>
 {% block script %}{% endblock %}
 </html>
