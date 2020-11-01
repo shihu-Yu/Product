@@ -25,7 +25,7 @@
     //密码的正则表达式 密码只能是英文字母开头 长度为3至7位
     var $passwordReg = /^\w{3,6}$/
 
-    $('#sub-login').on('click',function(){
+    $('#sub-register').on('click',function(){
         //获取注册页面输入框的内容
         var inputUsername = $('#regInputUsername').val()   
         var inputPassword = $('#regInputPassword').val()   
@@ -54,7 +54,14 @@
                 password:inputPassword
             },
             success:function(result){
-                console.log(result)
+                if(result.code == 0){
+                    $('#goto-login').trigger('click')
+                }else{
+                    $err.html(result.message)
+                }
+            },
+            error:function(){
+                $err.html('服务器端错误')
             }
         })
         

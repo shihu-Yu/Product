@@ -1,7 +1,7 @@
 //处理用户模型
 const mongoose = require('mongoose')
 
-//定义注册y模型
+//定义注册用户模型
 const userSchema = new mongoose.Schema({
     username:{
         type:String,
