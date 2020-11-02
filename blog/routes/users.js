@@ -34,5 +34,33 @@ router.post('/register',async (req,res)=>{
    
 })
 
+//登陆逻辑
+router.post('/login',async (req,res)=>{
+    const {username, password}= req.body
+    try{
+        //查询用户名和密码是否存在
+        const user = await User.findOne({username:username,password:hmac(password)},"-password -__v")//这里查询密码时要加密传入，否则会查询失败
+        if(user){
+            //用Cookies的对象来设置cookie,Cookies的对象在app.js中用中间件保存的
+            req.cookies.set('userInfo',JSON.stringify(user))
+            return res.json({
+                code:0,
+                message:'登陆成功'
+            })
+        }else{
+           return res.json({
+                code:1,
+                message:'登陆失败,用户名或密码错误'
+            })
+        }
+    }catch(e){
+        res.json({
+            code:1,
+            message:'服务器端错误'
+        })
+    }
+   
+})
+
 
 module.exports = router

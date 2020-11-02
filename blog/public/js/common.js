@@ -66,7 +66,47 @@
         })
         
     })
-    
+
+    //登陆逻辑的处理
+    $('#sub-login').on('click',function(){
+        //获取注册页面输入框的内容
+        var inputUsername = $('#loginInputUsername').val()   
+        var inputPassword = $('#loginInputPassword').val()   
+        var $err =  $loginWrap.find('.text-danger')
+        //验证注册时的用户名以及密码
+        var errMsg = ''
+        if(!$usernameReg.test(inputUsername)){
+            errMsg = '用户名只能以下划线、英文字母和数字开头，长度为3至6位'
+        }else if(!$passwordReg.test(inputPassword)){
+            errMsg = '密码格式错误 密码只能是英文字母开头 长度为3至7位'
+        }
+        if(errMsg){
+            $err.html(errMsg)
+            return false
+        }
+        $err.html('')
+        $.ajax({
+            url:'/users/login',
+            type:'POST',
+            dataType:'json',
+            data:{
+                username:inputUsername,
+                password:inputPassword
+            },
+            success:function(result){
+                if(result.code == 0){
+                    //刷新当前页面
+                    window.location.reload()
+                }else{
+                    $err.html(result.message)
+                }
+            },
+            error:function(){
+                $err.html('服务器端错误')
+            }
+        })
+        
+    })
 
     
     
