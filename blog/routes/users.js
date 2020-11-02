@@ -42,7 +42,10 @@ router.post('/login',async (req,res)=>{
         const user = await User.findOne({username:username,password:hmac(password)},"-password -__v")//这里查询密码时要加密传入，否则会查询失败
         if(user){
             //用Cookies的对象来设置cookie,Cookies的对象在app.js中用中间件保存的
-            req.cookies.set('userInfo',JSON.stringify(user))
+            // req.cookies.set('userInfo',JSON.stringify(user))
+            
+            //设置session
+            req.session.userInfo = user
             return res.json({
                 code:0,
                 message:'登陆成功'
@@ -58,8 +61,17 @@ router.post('/login',async (req,res)=>{
             code:1,
             message:'服务器端错误'
         })
-    }
-   
+    }  
+})
+
+//退出逻辑
+router.get('/logout',async (req,res)=>{
+    //销毁session
+    req.session.destroy()
+    return res.json({
+        code:0,
+        message:'用户退出成功'
+    })
 })
 
 

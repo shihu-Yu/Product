@@ -2,7 +2,10 @@ const express = require('express')
 const swig = require('swig')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
-const Cookies = require('cookies')
+// const Cookies = require('cookies')
+
+const session = require('express-session')
+const MongoStore = require('connect-mongo')(session)
 
 const app = express()
 
@@ -35,6 +38,7 @@ app.set('views', './views')
 app.set('view engine', 'html')
 
 //设置cookie的中间件
+/*
 app.use((req,res,next)=>{
     //把cookie对象保存到req对象上
     req.cookies = new Cookies(req,res)
@@ -43,7 +47,28 @@ app.use((req,res,next)=>{
     req.userInfo = userInfo
     next()
 })
-
+*/
+//设置session中间件
+app.use(session({
+    //设置cookie名称
+    name: 'bloguser',
+    //用它来对session cookie签名，防止篡改
+    secret: 'abc123',
+    //强制保存session即使它并没有变化
+    resave: true,
+    //强制将未初始化的session存储
+    saveUninitialized: true,
+    //如果为true,则每次请求都更新cookie的过期时间
+    rolling: true,
+    //cookie过期时间 1天
+    cookie: { maxAge: 1000 * 60 * 60 * 24 },
+    //设置session存储在数据库中
+    store: new MongoStore({ mongooseConnection: mongoose.connection })
+}))
+app.use((req,res,next)=>{  
+    req.userInfo = req.session.userInfo || {}
+    next()
+})
 
 //路由模块化 分离开来 路由入口
 app.use('/',require('./routes/index'))
