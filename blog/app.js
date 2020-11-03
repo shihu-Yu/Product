@@ -73,6 +73,7 @@ app.use((req,res,next)=>{
 //路由模块化 分离开来 路由入口
 app.use('/',require('./routes/index'))
 app.use('/users',require('./routes/users'))
+app.use('/admins',require('./routes/admins'))
 
 
 

@@ -62,7 +62,11 @@
                     <div class="user-panel" id="user-info-wrap">
                         <p>欢迎<span>{{ userInfo.username }}</span></p>
                         <div>
-                            <a href="javascript:;">进入个人中心</a>
+                            {% if userInfo.isAdmin %}
+                                <a href="/admins">进入管理中心</a>
+                            {% else %}
+                                <a href="/homes">进入个人中心</a>
+                            {% endif %}
                         </div>
                         <div>
                             <a href="javascript:;" id="logout">退出</a>
