@@ -39,7 +39,7 @@ module.exports = async (options)=>{
     const pages = Math.ceil(total / limit)
     if(pages == 0){
         return {
-            docus:0,
+            docs:0,
             pages:0,
             list:[],
             page
@@ -54,9 +54,9 @@ module.exports = async (options)=>{
         list.push(i)
     }
     //获取数据
-    const docus = await model.find({},projection).sort(sort).skip(skip).limit(limit)
+    const docs = await model.find({},projection).sort(sort).skip(skip).limit(limit)
     return {
-        docus,
+        docs,
         pages,
         list,
         page

@@ -38,7 +38,7 @@ router.get('/users',async(req,res)=>{
     
     res.render('admin/user_list',{
         userInfo:req.userInfo,
-        users:result.docus,
+        users:result.docs,
         list:result.list,
         pages:result.pages,
         page:result.page,

@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block content %}
+<a href="/categories/add" class="btn btn-primary">新增</a>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
@@ -33,6 +34,6 @@
     </div>
 
     
-    <!-- 包含 分页模板 -->
-    {% include "./pagination.html" %}
+<!-- 包含 分页模板 -->
+{% include "./pagination.html" %}
 {% endblock %}
