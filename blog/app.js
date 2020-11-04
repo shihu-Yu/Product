@@ -74,6 +74,7 @@ app.use((req,res,next)=>{
 app.use('/',require('./routes/index'))
 app.use('/users',require('./routes/users'))
 app.use('/admins',require('./routes/admins'))
+app.use('/categories',require('./routes/categories'))
 
 
 
