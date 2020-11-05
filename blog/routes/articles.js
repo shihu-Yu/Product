@@ -19,20 +19,20 @@ router.use((req,res,next)=>{
     }
 })
 
-//渲染分类列表
+//显示文章列表
 router.get('/',async(req,res)=>{
     const options = {
         page:req.query.page,
+        projection:"-_v",
         sort:{order:1},
-        model:Article,
-        projection:"-_v"
+        model:Article
     }
     
     const result = await pagination(options)
     
     res.render('admin/article_list', {
         userInfo: req.userInfo,
-        categories: result.docs,
+        articles: result.docs,
         list: result.list,
         pages: result.pages,
         page: result.page,
@@ -51,12 +51,37 @@ router.get('/add',async(req,res)=>{
 })
 //
 router.post('/uploadImage',upload.single('upload'),async(req,res)=>{
-    const filename = "/uploads/" + req.file.fieldname
+    const filename = "/uploads/" + req.file.filename
     res.json({
-        upload:true,
+        uploaded:true,
         url:filename
     })
 })
-
+//处理新增文档
+router.post('/add',async(req,res)=>{
+    const {title,category,intro,content} = req.body
+    const user = req.userInfo._id
+    try{
+        await Article.insertMany({
+            title,
+            category,
+            intro,
+            content,
+            user
+        })
+        console.log()
+        res.render('admin/success',{
+            userInfo:req.userInfo,
+            message:'添加文章成功',
+            nextUrl:'/articles'
+        })
+    }catch(e){
+        res.render('admin/error',{
+            userInfo: req.userInfo,
+            message:'服务器端错误',
+            nextUrl:'/articles'
+        })
+    }
+})
 
 module.exports = router

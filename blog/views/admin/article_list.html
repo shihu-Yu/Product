@@ -1,46 +1,41 @@
-<!-- 引入模板  这是分类管理页面-->
-{% extends "./layout.html" %}
-
+{% extends './layout.html' %}
 {% block title %}
-分类管理
+文章管理
 {% endblock %}
 
 {% block content %}
 <a href="/articles/add" class="btn btn-primary">新增</a>
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <thead>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
             <tr>
                 <th>文章ID</th>
-                <th>文章标题</th>
+                <th>文章名称</th>
                 <th>作者</th>
                 <th>分类</th>
                 <th>创建时间</th>
                 <th>点击量</th>
                 <th>操作</th>
             </tr>
-            </thead>
-            <tbody>
-                {% for article in arcitles %}
-                    <tr>
-                        <td>{{ article._id.toString() }}</td>
-                        <td>{{ article.tittle }}</td>
-                        <td>{{ article.user }}</td>
-                        <td>{{ article.category }}</td>
-                        <td>{{ article.createAT }}</td>
-                        <td>{{ article.click }}</td>
-                        <td>
-                            <a href="/detail/edit/{{category._id.toString()}}">查看</a>
-                            <a href="/arcitles/edit/{{category._id.toString()}}">编辑</a>
-                            <a href="/arcitles/delete/{{category._id.toString()}}" class="del">删除</a>
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-
-    
-<!-- 包含 分页模板 -->
-{% include "./pagination.html" %}
+        </thead>
+        <tbody>
+            {% for article in articles %}
+            <tr>
+                <td>{{ article._id.toString() }}</td>
+                <td>{{ article.title }}</td>
+                <td>{{ article.user }}</td>
+                <td>{{ article.category }}</td>
+                <td>{{ article.createAt }}</td>
+                <td>{{ article.click }}</td>
+                <td>
+                    <a href="/detail/{{article._id.toString()}}">查看</a>
+                    <a href="/articles/edit/{{article._id.toString()}}">编辑</a>
+                    <a href="/articles/delete/{{article._id.toString()}}" class="del">删除</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% include './pagination.html' %}
 {% endblock %}
