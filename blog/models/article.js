@@ -9,7 +9,7 @@ const articleSchema = new mongoose.Schema({
         required:true,
     },
     // 简介
-    intor:{
+    intro:{
         type:String,
         default:''
     },

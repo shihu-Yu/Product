@@ -4,3 +4,6 @@
   .container-fluid .table-responsive{
     min-height: 450px;
   }
+  .ck-editor__editable_inline{
+    height: 400px;
+  }

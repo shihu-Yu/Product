@@ -1,8 +1,11 @@
 // routes admins/article
 const express = require('express')
 const router = express.Router()
+const multer  = require('multer')
+const upload = multer({dest:'public/uploads/'})
 
 const Article = require('../models/article')
+const Category = require('../models/category')
 
 //获取分页共同函数
 const pagination = require('../utils/pagination')
@@ -34,6 +37,24 @@ router.get('/',async(req,res)=>{
         pages: result.pages,
         page: result.page,
         url: '/articles'
+    })
+})
+
+
+//渲染添加文章页面
+router.get('/add',async(req,res)=>{
+    const categories = await Category.find({},'-__v -order').sort({order:1})
+    res.render('admin/article_add',{
+        userInfo: req.userInfo,
+        categories
+    })
+})
+//
+router.post('/uploadImage',upload.single('upload'),async(req,res)=>{
+    const filename = "/uploads/" + req.file.fieldname
+    res.json({
+        upload:true,
+        url:filename
     })
 })
 
