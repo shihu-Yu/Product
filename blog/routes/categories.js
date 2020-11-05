@@ -129,7 +129,22 @@ router.post('/edit',async(req,res)=>{
     }
 })
 
-router.post('del',(req,res)=>{
-
+router.get('/delete/:id',async (req,res)=>{
+    const { id } = req.params
+    try{
+        await Category.deleteOne({_id:id})
+        res.render('admin/success',{
+            userInfo:req.userInfo,
+            message:'删除成功',
+            nextUrl:'/categories'
+        })
+    }catch(e){
+        res.render('admin/error',{
+            userInfo:req.userInfo,
+            message:'服务器端错误',
+            nextUrl:'/categories'
+        })
+    }
+    
 })
 module.exports = router
