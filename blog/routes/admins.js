@@ -46,4 +46,11 @@ router.get('/users',async(req,res)=>{
     })
 })
 
+router.get('/password',async(req,res)=>{
+
+    res.render('admin/repassword',{
+        userInfo:req.userInfo,
+        url:'/admins/password'
+    })
+})
 module.exports = router

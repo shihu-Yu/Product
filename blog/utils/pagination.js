@@ -1,5 +1,7 @@
 //分页 后端共通函数
 
+const { populate } = require("../models/user")
+
 /*所需要传输的数据
  * @param {} options
 limit 表示每页显示多少数据
@@ -12,7 +14,7 @@ projection  表示查询数据时 不被显示出来的数据属性
 */
 module.exports = async (options)=>{
     //定义 并且进行结构赋值
-    let {limit:limit=6,page,sort:sort={_id:-1},model,query:query={},projection:projection=""}  = options
+    let {limit:limit=6 , page,sort:sort={_id:-1} , model ,query:query={},projection:projection="" , populates}  = options
     //这里相当于给page 赋值  不能使用let 否则会报错
     page = parseInt(page)
    
@@ -53,8 +55,16 @@ module.exports = async (options)=>{
     for(let i = 1;i<=pages;i++){
         list.push(i)
     }
+
+    //关联处理
+    const result = model.find(query,projection)
+    if(populates){
+        populates.forEach(populate => {
+            result.populate(populate)
+        })
+    }
     //获取数据
-    const docs = await model.find({},projection).sort(sort).skip(skip).limit(limit)
+    const docs = await result.sort(sort).skip(skip).limit(limit)
     return {
         docs,
         pages,

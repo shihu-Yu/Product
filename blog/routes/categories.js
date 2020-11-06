@@ -115,13 +115,13 @@ router.post('/edit',async(req,res)=>{
         }
         //更新(当程序走到这里时证明已经修改过内容且修改内容在数据库中不存在)
         await Category.updateOne({_id:id},{name,order})
-        return res.render('admin/success',{
+        res.render('admin/success',{
             userInfo:req.userInfo,
             message:'修改分类成功',
             nextUrl:'/categories'
         })
     }catch(e){
-        return res.render('admin/error',{
+        res.render('admin/error',{
             userInfo: req.userInfo,
             message:'服务器端错误',
             nextUrl:'/categories'
@@ -129,6 +129,7 @@ router.post('/edit',async(req,res)=>{
     }
 })
 
+//处理删除操作
 router.get('/delete/:id',async (req,res)=>{
     const { id } = req.params
     try{
