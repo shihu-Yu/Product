@@ -1,8 +1,11 @@
 // routes admins/admins
 const express = require('express')
+const Article = require('../models/article')
+const Category = require('../models/category')
 const router = express.Router()
 
 const User = require('../models/user')
+const hmac = require('../utils/hmac')
 
 //获取分页共同函数
 const pagination = require('../utils/pagination')
@@ -19,10 +22,14 @@ router.use((req,res,next)=>{
 //显示管理员后台首页
 router.get('/',async (req,res)=>{
     const userCount = await User.estimatedDocumentCount()
+    const articleCount = await Article.estimatedDocumentCount()
+    const categoryCount = await Category.estimatedDocumentCount()
     //处理登陆逻辑
     res.render('admin/index',{
         userInfo:req.userInfo,
-        userCount:userCount
+        userCount,
+        categoryCount,
+        articleCount
     }) 
 })
 
@@ -46,11 +53,35 @@ router.get('/users',async(req,res)=>{
     })
 })
 
+//显示修改密码界面
 router.get('/password',async(req,res)=>{
-
-    res.render('admin/repassword',{
+    res.render('admin/password',{
         userInfo:req.userInfo,
         url:'/admins/password'
     })
 })
+
+//处理修改密码
+router.post('/password',async(req,res)=>{
+    const {password} = req.body
+    try{
+        //更新密码
+        await User.updateOne({_id:req.userInfo._id},{password:hmac(password)})
+        //退出登录
+        req.session.destroy()
+        res.render('admin/success',{
+            userInfo:req.userInfo,
+            message:'修改密码成功',
+            nextUrl:'/'
+        })
+    }catch(e){
+        res.render('admin/error',{
+            userInfo:req.userInfo,
+            message:'服务器端错误',
+            nextUrl:'/admins/password'
+        })
+    }
+})
+
+
 module.exports = router

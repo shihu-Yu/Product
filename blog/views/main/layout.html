@@ -6,7 +6,7 @@
     <title>{% block title %}{% endblock %}</title>
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="/css/common.css">
     {% block style %}{% endblock %}
 </head>
 <body>
@@ -28,20 +28,13 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav" id="nav">
                     <li class="active">
-                        <a href="./index.html">首页 <span class="sr-only">(current)</span></a>
+                        <a href="/">首页 <span class="sr-only">(current)</span></a>
                     </li>
+                    {% for category in categories %}
                     <li>
-                        <a href="./list.html">HTML/CSS</a>
+                        <a href="/list/{{category._id.toString()}}">{{ category.name }}</a>
                     </li>
-                    <li>
-                        <a href="./list.html">JavaScript</a>
-                    </li>
-                    <li>
-                        <a href="./list.html">学无止境</a>
-                    </li>
-                    <li>
-                        <a href="./list.html">我的足迹</a>
-                    </li>
+                    {% endfor %}
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
@@ -145,10 +138,10 @@
                     <!-- 广告 -->
                     <div class="row ad hidden-xs hidden-md">
                         <a href="#" class="thumbnail ">
-                            <img src="./images/ad/ad1.jpg" alt="">
+                            <img src="/images/ad/ad1.jpg" alt="">
                         </a>
                         <a href="#" class="thumbnail ">
-                            <img src="./images/ad/ad2.jpg" alt="">
+                            <img src="/images/ad/ad2.jpg" alt="">
                         </a>
                     </div>
                     
@@ -159,7 +152,7 @@
                         </div>
                         <div class="panel-body">
                             <div class="media-left">
-                                <img src="./images/me.jpg" alt=""  class="img-circle">
+                                <img src="/images/me.jpg" alt=""  class="img-circle">
                             </div>
                             <div class="media-right">
                                 <h4>鱼是乎</h4>
@@ -190,7 +183,7 @@
                             <h3>关注我</h3>
                         </div>
                         <div class="panel-body" >
-                            <img src="./images/Wechat.jpeg" alt="">
+                            <img src="/images/Wechat.jpeg" alt="">
                         </div>
                     </div>
                 </div>
@@ -206,7 +199,7 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
 <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
-<script src="js/common.js"></script>
-<script src="js/logout.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/logout.js"></script>
 {% block script %}{% endblock %}
 </html>
