@@ -27,11 +27,19 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav" id="nav">
-                    <li class="active">
+                    {% if currentCategory %}
+                        <li>
+                    {% else %}
+                        <li class="active">
+                    {% endif %}        
                         <a href="/">首页 <span class="sr-only">(current)</span></a>
                     </li>
                     {% for category in categories %}
+                    {% if currentCategory == category._id.toString() %}
+                    <li class="active">
+                    {% else %}
                     <li>
+                    {% endif %}
                         <a href="/list/{{category._id.toString()}}">{{ category.name }}</a>
                     </li>
                     {% endfor %}
@@ -169,11 +177,9 @@
                         </div>
                         <div class="panel-body">
                             <div class="list-group">
-                                <a href="#" class="list-group-item">深入了解 Bootstrap 底层结构的关键部分</a>
-                                <a href="#" class="list-group-item">深入了解 Bootstrap 底层结构的关键部分</a>
-                                <a href="#" class="list-group-item">深入了解 Bootstrap 底层结构的关键部分</a>
-                                <a href="#" class="list-group-item">深入了解 Bootstrap 底层结构的关键部分</a>
-                                <a href="#" class="list-group-item">深入了解 Bootstrap 底层结构的关键部分</a>
+                                {% for article in topArticles %}
+                                <a href="/detail/{{article._id.toString()}}" target="_blank"    class="list-group-item">[{{article.click}}]{{article.title}}</a>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
