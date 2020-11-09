@@ -15,6 +15,7 @@ projection  表示查询数据时 不被显示出来的数据属性
 module.exports = async (options)=>{
     //定义 并且进行结构赋值
     let {limit:limit=4 , page,sort:sort={_id:-1} , model ,query:query={},projection:projection="" , populates}  = options
+    
     //这里相当于给page 赋值  不能使用let 否则会报错
     page = parseInt(page)
    
@@ -37,14 +38,15 @@ module.exports = async (options)=>{
     */
   
     //计算总页数
-    const total = await model.estimatedDocumentCount(query)
+    const total = await model.countDocuments(query)
+    
     const pages = Math.ceil(total / limit)
     if(pages == 0){
         return {
-            docs:0,
-            pages:0,
+            docs:[],
             list:[],
-            page
+            pages:0,
+            page:0
         }
     }
     if(page > pages){

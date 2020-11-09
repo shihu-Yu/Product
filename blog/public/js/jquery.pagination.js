@@ -36,8 +36,24 @@
                     if(currentPage == page){
                         return false
                     }
+                    var data = {
+                        page:page
+                    }
+                    var id = $this.data('id')
+                    if(id){
+                        data.id = id
+                    }
                     //发送ajax
-
+                    $.ajax({
+                        url:options.url,
+                        data:data,
+                        dataType:'json',
+                        success:function(result){
+                            if(result.code == 0){
+                                $this.trigger('get-data',result.data)
+                            }
+                        }
+                    })
                 })    
             })
         }
