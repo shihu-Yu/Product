@@ -14,7 +14,7 @@ projection  表示查询数据时 不被显示出来的数据属性
 */
 module.exports = async (options)=>{
     //定义 并且进行结构赋值
-    let {limit:limit=6 , page,sort:sort={_id:-1} , model ,query:query={},projection:projection="" , populates}  = options
+    let {limit:limit=4 , page,sort:sort={_id:-1} , model ,query:query={},projection:projection="" , populates}  = options
     //这里相当于给page 赋值  不能使用let 否则会报错
     page = parseInt(page)
    
