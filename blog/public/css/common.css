@@ -63,6 +63,9 @@ a:hover{
 .main .custom-panel .panel-body{
     background-color: #f1f1f1;
 }
+.main #article-wrap{
+    min-height: 450px;
+}
 .main .custom-panel .panel-body .list-group-item{
     border: none;
     background-color: #f1f1f1;

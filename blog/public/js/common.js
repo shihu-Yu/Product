@@ -172,7 +172,7 @@
         $('#article-wrap').html(articleHtml)
         //构建分页器html并且渲染
         if(data.pages <=1){
-            $articlePage.html('')
+            $articlePage.find('.pagination').html('')
         }else{
             var paginationHtml = buildPaginationHtml(data.list,data.page,data.pages)
             $articlePage.find('.pagination').html(paginationHtml)
@@ -180,7 +180,7 @@
     })
     // 调用分页jquery插件
     $articlePage.pagination({
-        url:"articlesList"
+        url:"/articlesList"
     })
     
 })(jQuery)

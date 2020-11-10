@@ -68,7 +68,7 @@ router.get('/articlesList',async(req,res)=>{
 router.get('/detail/:id',async(req,res)=>{
     const { id } = req.params
     const commonDataPromise =  getCommonData()
-    const articlePromise = Article.findOneAndUpdate({_id:id},{$inc:{click:1}})
+    const articlePromise = Article.findOneAndUpdate({_id:id},{$inc:{click:1}},{new:false})
         .populate({path:'user',select:'username'})
         .populate({path:'category',select:'name'})
 

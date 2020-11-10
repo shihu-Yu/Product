@@ -55,7 +55,7 @@ articleSchema.statics.findPagetionArticles = function(req,query){
 //定义虚拟字段
 articleSchema.virtual('createdTime').get(function(){
     // return new Date(this.createAt).toLocaleString()
-    return moment(this.createdAt).format('YYYY-MM-DD HH:mm:ss')
+    return moment(this.createAt).format('YYYY-MM-DD HH:mm:ss')
 })
 
 

@@ -2,7 +2,7 @@
     font-size: 30px;
 }
 .detail-panel{
-    min-height: 600px;
+    min-height: 700px;
 }
 .detail-panel .panel-title{
     margin-bottom: 10px;
@@ -13,4 +13,10 @@
 .detail-panel  .sub-title .view-num{
     margin-right: 0;
     font-style: italic;
+}
+#sub-btn-commont{
+    line-height: 29px;
+    width: 100%;
+    font-size: 23px;
+    margin-top: 2px;
 }
