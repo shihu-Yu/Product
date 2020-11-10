@@ -3,7 +3,7 @@
         pagination:function(options){
             return this.each(function(){
                 var $this = $(this)
-                $('.pagination').on('click','a',function(){
+                $this.on('click','a',function(){
                     var $elem = $(this)
                     //获取  当前添加active class的页码
                     var currentPage = $('.pagination').find('li.active a').html()

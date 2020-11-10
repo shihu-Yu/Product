@@ -7,7 +7,7 @@
 <div class="panel panel-default detail-panel">
     <!-- Default panel contents -->
     <div class="panel-heading">
-        <h3 class="panel-title" id="detailH">深入了解 Bootstrap 底层结构的关键部分</h3>
+        <h3 class="panel-title" id="detailH">{{article.title}}</h3>
         <p class="sub-title text-muted">
             <span>{{article.category.name}}</span>
             <span>{{article.createdTime}}</span>
@@ -26,37 +26,41 @@
 <div class="row">
     {% if userInfo._id %}
     <div class="col-md-10">
-        <textarea id="inputComment" cols="85" rows="2"></textarea>
+        <textarea id="comment-textarea" cols="85" rows="3" class="form-control"></textarea>
     </div>
-       
     <div class="col-md-2">
-        <button id="sub-btn-comment" class="btn btn-primary">提交</button>   
+        <button data-id="{{article._id.toString()}}" id="btn-sub-comment" class="btn btn-primary">提交</button>
     </div>
+    <div class="col-md-12 text-danger"></div>
     {% else %}
-    <div class="col-md-10">
-        <p>请登陆后再提交</p>
+    <div class="col-md-12">
+        <p class="bg-success comment-login-tips">请求登录后提交评论</p>
     </div>
     {% endif %}
 </div>
-<div class="row">
-    <div class="col-md-10">
-        <div class="panel-body comment-item" >
-            <p>年后的是否会的时间跨度哈哈空间范德萨发大水范德萨发达发达反对大概豆腐干梵蒂冈反对呱呱呱呱呱呱呱呱呱呱呱呱呱呱呱的</p>
+<div class="row" id="comment-wrap">
+    {% for comment in comments %}
+    <div class="col-md-12">
+        <div class="text-muted comment-item ">
+            <p>{{ comment.content }}</p>
             <p>
-                <span class="footer-text ">admin</span>
-                <span>发布于</span>
-                <span class="footer-text">2020/11/06</span>
+               <span>{{ comment.user.username }}</span> 发表于
+                <span>{{ comment.createdTime }}</span>
             </p>
         </div>
-        <div class="panel-body comment-item" >
-            <p>年后的是否会的时间跨度哈哈空间范德萨发大水范德萨发达发达反对大概豆腐干梵蒂冈反对呱呱呱呱呱呱呱呱呱呱呱呱呱呱呱的</p>
-            <p>
-                <span class="footer-text ">admin</span>
-                <span>发布于</span>
-                <span class="footer-text">2020/11/06</span>
-            </p>
-        </div>
-        {% include './pagination.html' %}
-    </div>   
+    </div>
+    {% endfor %}
 </div>
+
+<div class="row">
+    <div class="col-md-12">
+        <nav aria-label="Page navigation" id="comment-page" data-id="{{article._id.toString()}}">
+            {% include './pagination.html' %}
+        </nav>
+    </div>
+</div>
+
+{% endblock %}
+{% block script %}
+<script src="/js/detail.js"></script>
 {% endblock %}

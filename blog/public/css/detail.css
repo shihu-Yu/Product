@@ -14,9 +14,17 @@
     margin-right: 0;
     font-style: italic;
 }
-#sub-btn-commont{
-    line-height: 29px;
+#btn-sub-comment{
+    line-height: 30px;
     width: 100%;
     font-size: 23px;
-    margin-top: 2px;
+    margin-top: 16px;
+}
+.comment-item {
+    background-color: #ffffff;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+#comment-wrap{
+    margin-top: 50px;
 }

@@ -1,6 +1,7 @@
 const express = require('express')
 const Category = require('../models/category')
 const Article = require('../models/article')
+const Comment = require('../models/comment')
 const router = express.Router()
 //获取共通数据
 
@@ -63,6 +64,23 @@ router.get('/articlesList',async(req,res)=>{
         data: result
     })  
 })
+//获取前台评论分页数据
+router.get('/commentsList',async(req,res)=>{
+    let query = {}
+    let id = req.query.id
+    if(id){
+        query.article = id
+    }
+     //获取分类
+    const result = await Comment.findPaginationComments(req, query)
+    res.json({
+        code: 0,
+        message: '获取分页数据成功',
+        data: result
+    })
+})
+
+
 
 //显示详情页面
 router.get('/detail/:id',async(req,res)=>{
@@ -72,14 +90,20 @@ router.get('/detail/:id',async(req,res)=>{
         .populate({path:'user',select:'username'})
         .populate({path:'category',select:'name'})
 
+    const commentPromise = Comment.findPaginationComments(req,{article:id})
     const {categories,topArticles} = await commonDataPromise
     const article = await articlePromise
+    const commentData = await commentPromise
     res.render('main/detail',{
         userInfo:req.userInfo,
         categories,
         currentCategory:article.category._id,
         topArticles,
-        article 
+        article ,
+        comments: commentData.docs,
+        list: commentData.list,
+        pages: commentData.pages,
+        page: commentData.page, 
     })   
 })
 module.exports = router
