@@ -8,7 +8,8 @@ const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
 
 const app = express()
-
+// 用于消除使用findOneAndDelete() 方法时 控制台显示的警告
+mongoose.set('useFindAndModify', false)
 mongoose.connect('mongodb://localhost/blog',{useNewUrlParser:true,useUnifiedTopology:true})
 const db = mongoose.connection
 db.on('error',()=>{
@@ -77,6 +78,7 @@ app.use('/admins',require('./routes/admins'))
 app.use('/categories',require('./routes/categories'))
 app.use('/articles',require('./routes/articles'))
 app.use('/comments',require('./routes/comments'))
+app.use('/homes',require('./routes/homes'))
 
 
 app.listen(3000,()=>{

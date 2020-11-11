@@ -45,6 +45,9 @@ a:hover{
 .ad .thumbnail:hover{
     box-shadow: 3px 3px 3px rgba(0,0,0,0.3);
 }
+.ad .thumbnail{
+    width: 358px;
+}
 .ad .thumbnail img{
     width: 100%;
 }

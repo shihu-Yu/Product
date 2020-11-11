@@ -1,5 +1,6 @@
 <!-- 前端界面分页共同模板 -->
 <ul class="pagination">
+    {% if pages >1 %}
     {% if page==1 %}
     <li class="disabled">
         <a href="javascript:;" aria-label="Previous">
@@ -33,5 +34,6 @@
         <span aria-hidden="true">&raquo;</span>
         </a>
     </li>
+    {% endif %}
     {% endif %}
 </ul>

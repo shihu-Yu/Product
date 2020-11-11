@@ -11,7 +11,7 @@ router.use((req, res, next) => {
     if (req.userInfo._id) {
         next()
     } else {
-        return res.send('<h1>请用登录</h1>')
+        return res.send('<h1>请登录</h1>')
     }
 })
 

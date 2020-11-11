@@ -39,7 +39,7 @@ const articleSchema = new mongoose.Schema({
 })
 
 //静态方法
-articleSchema.statics.findPagetionArticles = function(req,query){
+articleSchema.statics.findPagetionArticles = async function(req,query){
     const options = {
         page:req.query.page,
         projection:"-__v",
@@ -48,8 +48,15 @@ articleSchema.statics.findPagetionArticles = function(req,query){
         query:query,
         populates:[{path:'user',select:'username'},{path:'category',select:'name'}]
     }
-    return pagination(options)
-
+    const result = await pagination(options)
+    // 格式化时间
+    const docs = result.docs.map(item =>{
+        const obj = JSON.parse(JSON.stringify(item))
+        obj.createdTime = moment(this.createAt).format('YYYY-MM-DD HH:mm:ss')
+        return obj
+    })
+    result.docs = docs
+    return result
 }
 
 //定义虚拟字段
