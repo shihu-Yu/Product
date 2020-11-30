@@ -5,15 +5,32 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons'
 import './index.less'
 
 class Login extends Component{
+    constructor(props){
+        super(props)
+        this.state = {
+            captcha:''
+        }
+        this.getCaptcha = this.getCaptcha.bind(this)
+    }
     onFinish(values){
         console.log('Received values of form: ', values);
     }
-    async componentDidMount(){
+    // 定义获取验证码的函数
+    async getCaptcha(){
         // 发送请求请求验证码图片
-        axios({
+        const result = await axios({
             method: 'get',
             url: '/v1/users/captcha',
         })
+        if(result.data.code == 0){
+            this.setState({
+                captcha:result.data.data
+            })
+        }
+    }
+    componentDidMount(){
+        // 调用获取验证码的函数
+        this.getCaptcha()
     }
     render(){
         return(
@@ -89,7 +106,7 @@ class Login extends Component{
                             </Form.Item>
                         </Col>
                         <Col span={12}>
-                            <div>captcha</div>
+                            <div className="captcha" onClick={this.getCaptcha} dangerouslySetInnerHTML={{__html:this.state.captcha}}></div>
                         </Col>
                         </Row>
                     </Form.Item>    
