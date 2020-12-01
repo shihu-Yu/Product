@@ -1,7 +1,9 @@
 import React ,{ Component } from 'react'
 
-import {BrowserRouter as Router,Route,Switch,Redirect,Link,NavLink,useParams} from 'react-router-dom'
-import Login from './pages/login'
+import {BrowserRouter as Router,Route,Switch,Redirect} from 'react-router-dom'
+import Login from 'pages/login'
+import Home from 'pages/home'
+import { getUsername } from './util'
 
 
 class App extends Component{
@@ -9,11 +11,19 @@ class App extends Component{
         super(props)   
     } 
     render(){ 
-        return(
-            <div className="App">
-                <Login />
-            </div>
-        )
+        // 自定义路由
+        const ProtectRoute = ({conponent:Component,...rest})=><Route {...rest} render={()=>{getUsername() ? <Component/> :  <Redirect to="/login" />}}  />
+        const LoginRoute = ({ component: Component, ...rest }) => <Route {...rest} render={() => (getUsername() ? <Redirect to="/" /> : <Component />)} />
+            return(
+                <Router>
+                    <div className="App">
+                        <Switch>
+                            <ProtectRoute exact path='/' component={Home} />
+                            <LoginRoute path='/login' component={Login} />
+                        </Switch>
+                    </div>
+                </Router>
+            )
     }
 }
 

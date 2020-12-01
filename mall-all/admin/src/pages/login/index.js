@@ -9,32 +9,14 @@ import './index.less'
 class Login extends Component{
     constructor(props){
         super(props)
-        this.state = {
-            captcha:''
-        }
-        this.getCaptcha = this.getCaptcha.bind(this)
     }
-    onFinish(values){
-        this.props.handleFinsh(values)
-    }
-    // 定义获取验证码的函数
-    async getCaptcha(){
-        // 发送请求请求验证码图片
-        const result = await axios({
-            method: 'get',
-            url: '/v1/users/captcha',
-        })
-        if(result.data.code == 0){
-            this.setState({
-                captcha:result.data.data
-            })
-        }
-    }
+
     componentDidMount(){
         // 调用获取验证码的函数
-        this.getCaptcha()
+        this.props.handleCaptcha()
     }
     render(){
+        const { handleFinsh,isFetching,captcha,handleCaptcha } = this.props
         return(
             <div className="Login">
                 <Form
@@ -43,7 +25,7 @@ class Login extends Component{
                     initialValues={{
                     remember: true,
                     }}
-                    onFinish={this.onFinish.bind(this)}
+                    onFinish={handleFinsh}
                 >
                     <Form.Item
                         name="username"
@@ -112,7 +94,7 @@ class Login extends Component{
                             </Form.Item>
                         </Col>
                         <Col span={12}>
-                            <div className="captcha" onClick={this.getCaptcha} dangerouslySetInnerHTML={{__html:this.state.captcha}}></div>
+                            <div className="captcha" onClick={handleCaptcha} dangerouslySetInnerHTML={{__html:captcha}}></div>
                         </Col>
                         </Row>
                     </Form.Item>    
@@ -122,7 +104,7 @@ class Login extends Component{
                             type="primary" 
                             htmlType="submit" 
                             className="login-form-button"
-                            // loading={true}
+                            loading={isFetching}
                         >
                             登陆
                         </Button>
@@ -132,9 +114,16 @@ class Login extends Component{
         )
     }
 }
+const mapStateToProps = (state)=>({
+    isFetching:state.get('login').get('isFetching'),
+    captcha:state.get('login').get('captcha')
+})
 const mapDispatchToProps = (dispatch)=>({
     handleFinsh:(values)=>{
         dispatch(actionCreator.getLoginDataAction(values))
+    },
+    handleCaptcha:()=>{
+        dispatch(actionCreator.getCaptchaAction())
     }
 })
-export default connect(null,mapDispatchToProps)(Login)
+export default connect(mapStateToProps,mapDispatchToProps)(Login)

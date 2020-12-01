@@ -1,19 +1,18 @@
-// import {LOAD_DATA,CHANGE_DATA,ADD_DATA,DEL_DATA} from './actionTypes'
 import * as types from './actionTypes'
 import {fromJS} from 'immutable'
 // 定义一个初始化的state
-let defaultState = fromJS({list:[],task:""}) 
-/**
- * 1. reducer是一个纯函数(固定的输入必须是一个固定的输出),保证有固定输出的方法是不要在函数中
- * 使用Date.now或者Math.random这些方法生成数据
- * 2. reducer主要是根据上一次的state和最新的action用来处数据
- * 3. reducer必须要返回一个新的state的对象,因为state应该有store来统一管理
- * 4. store根据返回的新的state来更新store里面的state,组件使用getState方法来获取store里面的state
- * 5. action是一个对象,存储了操作类型和必要的参数,必须保证action的类型是唯一的 
- *
- */
+let defaultState = fromJS({isFetching:false,captcha:''}) 
+
  function reducer(state=defaultState,action) {
-      
+        if(action.type == types.REQUEST_START){
+                return state.set('isFetching',true)
+        }
+        if(action.type == types.REQUEST_END){
+                return state.set('isFetching',false)
+        }
+        if (action.type == types.SET_CAPTCHA){
+                return state.set('captcha', action.payload)
+            }
         return state
 }
 export default reducer
