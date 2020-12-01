@@ -1,7 +1,9 @@
 import React ,{Component} from 'react'
 import axios from 'axios'
+import {connect} from 'react-redux'
 import { Form, Input, Button,Row,Col } from 'antd'
-import { UserOutlined, LockOutlined } from '@ant-design/icons'
+import { UserOutlined, LockOutlined,VerifiedOutlined } from '@ant-design/icons'
+import {actionCreator} from './store'
 import './index.less'
 
 class Login extends Component{
@@ -13,7 +15,7 @@ class Login extends Component{
         this.getCaptcha = this.getCaptcha.bind(this)
     }
     onFinish(values){
-        console.log('Received values of form: ', values);
+        this.props.handleFinsh(values)
     }
     // 定义获取验证码的函数
     async getCaptcha(){
@@ -41,7 +43,7 @@ class Login extends Component{
                     initialValues={{
                     remember: true,
                     }}
-                    onFinish={this.onFinish}
+                    onFinish={this.onFinish.bind(this)}
                 >
                     <Form.Item
                         name="username"
@@ -102,7 +104,11 @@ class Login extends Component{
                                     }
                             ]}
                             >
-                                <Input />
+                                <Input
+                                prefix={<VerifiedOutlined className="site-form-item-icon"/>}
+                                type="captcha"
+                                placeholder="验证码"
+                                />
                             </Form.Item>
                         </Col>
                         <Col span={12}>
@@ -116,6 +122,7 @@ class Login extends Component{
                             type="primary" 
                             htmlType="submit" 
                             className="login-form-button"
+                            // loading={true}
                         >
                             登陆
                         </Button>
@@ -125,5 +132,9 @@ class Login extends Component{
         )
     }
 }
-
-export default Login
+const mapDispatchToProps = (dispatch)=>({
+    handleFinsh:(values)=>{
+        dispatch(actionCreator.getLoginDataAction(values))
+    }
+})
+export default connect(null,mapDispatchToProps)(Login)
