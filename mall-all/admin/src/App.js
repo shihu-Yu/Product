@@ -12,7 +12,7 @@ class App extends Component{
     } 
     render(){ 
         // 自定义路由
-        const ProtectRoute = ({conponent:Component,...rest})=><Route {...rest} render={()=>{getUsername() ? <Component/> :  <Redirect to="/login" />}}  />
+        const ProtectRoute = ({ component: Component, ...rest }) => <Route {...rest} render={() => (getUsername() ? <Component /> : <Redirect to="/login" /> )}  />
         const LoginRoute = ({ component: Component, ...rest }) => <Route {...rest} render={() => (getUsername() ? <Redirect to="/" /> : <Component />)} />
             return(
                 <Router>
