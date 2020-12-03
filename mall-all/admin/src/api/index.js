@@ -1,7 +1,7 @@
 // 文件的目标 生成一个对象，这个对象的每一个属性是一个方法名，属性值是一个api的调用方法
 import { SERVER,API_CONFIG,VERSION } from './config'
 import axios from 'axios'
-
+import {goLogin,removeUsername} from  'util'
 
 /**
  * 生成一个对象，这个对象的每一个属性是一个方法名，属性值是一个api的调用方法
@@ -31,7 +31,14 @@ const request = (url,method,data)=>{
         axios(options)
         .then(result=>{
             const data = result.data
-            resolve(data)
+            if(data.code == 10){
+                // 没有权限
+                removeUsername()
+                goLogin()
+                reject('没有权限')
+            }else{
+                resolve(data)
+            }
         })
         .catch(e=>{
             reject(e)

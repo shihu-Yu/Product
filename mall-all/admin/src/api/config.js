@@ -6,5 +6,7 @@ export const API_CONFIG = {
     // 数组中第一个参数是请求地址 第二个参数是请求方法
 
     login:                        ['/users/login','post'],
-    getCaptcha:                   ['/users/captcha','get']
+    getCaptcha:                   ['/users/captcha','get'],
+    getCounts:                    ['/counts','get'],
+    logout:                       ['/users/logout','get']
 }

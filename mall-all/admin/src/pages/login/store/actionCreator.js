@@ -46,21 +46,6 @@ export const getCaptchaAction = ()=>{
 export const getLoginDataAction = (values)=>{
     return async function (dispatch){
         dispatch(getRequestStart())
-        /*
-        const result = await axios({
-            method:'post',
-            url:'/v1/users/login',
-            data:{
-                username:values.username,
-                password:values.password,
-                role:'admin',
-                captchaCode:values.captcha,
-                channel:'page'
-            }
-        })
-        const data = result.data
-        console.log(data)
-        */
        const data = await api.login({
         username: values.username,
         password: values.password,
