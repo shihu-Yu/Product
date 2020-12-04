@@ -1,9 +1,9 @@
 
 import * as types  from './actionTypes'
-import axios from 'axios'
+
 import { message } from 'antd'
-import regeneratorRuntime from "regenerator-runtime"
-import { saveUsername} from 'util'
+
+import { saveUsername,goHome} from 'util'
 import api from 'api'
 
 
@@ -20,18 +20,7 @@ const setCaptcha = (captcha)=>({
 
 // 定义获取验证码的函数
 export const getCaptchaAction = ()=>{
-    /*
-    // 发送请求请求验证码图片
-    return async function(dispatch){
-        const result = await axios({
-            method:'get',
-            url:'/v1/users/captcha'
-        })
-        if(result.data.code == 0){
-            dispatch(setCaptcha(result.data.data))
-        }
-    }
-    */
+   
    return async function(dispatch){
        const result = await api.getCaptcha()
        if(result.code == 0){
@@ -59,8 +48,8 @@ export const getLoginDataAction = (values)=>{
             message.success('登陆成功',1)
             // 保存登录状态
             saveUsername(data.data.username)
-            // 转跳界面
-            window.location.href = '/'
+            // 转跳界面到首页
+            goHome()
         }
         dispatch(getRequestEnd())
     } 

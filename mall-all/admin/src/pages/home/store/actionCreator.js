@@ -1,9 +1,5 @@
 
 import * as types  from './actionTypes'
-import axios from 'axios'
-import { message } from 'antd'
-import regeneratorRuntime from "regenerator-runtime"
-import { saveUsername} from 'util'
 import api from 'api'
 
 const setCounts = (payload)=>({

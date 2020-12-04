@@ -11,7 +11,7 @@ export class  CustomSider  extends Component{
                 <Sider width={200} className="site-layout-background">
                     <Menu
                         mode="inline"
-                        style={{ height: 600, borderRight: 0 }}
+                        style={{ height: 800, borderRight: 0 }}
                     >
                         <Menu.Item key="1">
                             <NavLink exact to="/"> <HomeOutlined /> 首页</NavLink>

@@ -4,7 +4,6 @@ import {connect} from 'react-redux'
 
 import CustomLayout from 'components/custom-layout'
 import {actionCreator} from './store'
-import './index.less'
 const { SubMenu } = Menu;
 const {  Content } = Layout;
 class Home extends Component{
@@ -18,7 +17,7 @@ class Home extends Component{
             <div className="Home">
                 <CustomLayout style={{ padding: '0 24px 24px' }}>
                     <Breadcrumb style={{ margin: '16px 0' }}>
-                        <Breadcrumb.Item>Home</Breadcrumb.Item>
+                        <Breadcrumb.Item>首页</Breadcrumb.Item>
                     </Breadcrumb>
                     <Content
                         className="site-layout-background"

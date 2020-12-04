@@ -18,5 +18,5 @@ export const goLogin = ()=>{
 }
 
 export const goHome = ()=>{
-    window.location.href = '/home'
+    window.location.href = '/'
 }

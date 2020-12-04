@@ -3,6 +3,9 @@ import React ,{ Component } from 'react'
 import {BrowserRouter as Router,Route,Switch,Redirect} from 'react-router-dom'
 import Login from 'pages/login'
 import Home from 'pages/home'
+import NotFound from 'pages/not-found'
+import User from 'pages/user'
+
 import { getUsername } from './util'
 
 
@@ -20,6 +23,8 @@ class App extends Component{
                         <Switch>
                             <ProtectRoute exact path='/' component={Home} />
                             <LoginRoute path='/login' component={Login} />
+                            <Route path='/user' component={User} />
+                            <Route path="*" component={NotFound} />
                         </Switch>
                     </div>
                 </Router>
