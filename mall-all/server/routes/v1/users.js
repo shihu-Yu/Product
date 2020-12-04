@@ -654,11 +654,12 @@ router.get('/list',(req,res)=>{
 		})	
 	})	
 })
+
 //修改用户状态
 router.put("/isActive",(req,res)=>{
 	const {id,isActive,page}  = req.body;
 	UserModel
-	.update({_id:id},{isActive:isActive})
+	.updateOne({_id:id},{isActive:isActive})
 	.then((user)=>{
 		if(user){
 			UserModel

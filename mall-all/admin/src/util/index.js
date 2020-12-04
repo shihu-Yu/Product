@@ -1,5 +1,5 @@
 // 这个文件主要是用来处理用户状态的
-
+import moment from 'moment'
 // 保存登录状态
 export const saveUsername = (username)=>{
     return window.localStorage.setItem('username',username)
@@ -20,3 +20,5 @@ export const goLogin = ()=>{
 export const goHome = ()=>{
     window.location.href = '/'
 }
+
+export const  formatDate = (date)=>moment(date).format('YYYY-MM-DD HH:mm:ss')

@@ -15,7 +15,7 @@ const { DB_HOST } = require('./config/index.js')
 const TokenModel = require('./models/token.js');
 
 //启动数据库
-mongoose.connect('mongodb://'+DB_HOST+':27017/kmall',{ useNewUrlParser: true });
+mongoose.connect('mongodb://'+DB_HOST+':27017/kmallm11',{ useNewUrlParser: true },{ useUnifiedTopology: true });
 
 const db = mongoose.connection;
 

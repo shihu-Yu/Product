@@ -23,10 +23,19 @@ const getApiObj = (apiConfig)=>{
 // 定义发送请求的函数
 const request = (url,method,data)=>{
     return new Promise((resolve,reject)=>{
+
         const options = {
             method:method,
             url:url,
-            data:data
+        }
+        // axios针对不同请求的类型 所需要传递数据的方法不同 具体查看git上的axios
+        switch(method.toUpperCase()){
+            case 'GET' :
+                options.params = data
+                break
+            default:
+                options.data = data
+                break
         }
         axios(options)
         .then(result=>{

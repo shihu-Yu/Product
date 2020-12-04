@@ -1,40 +1,48 @@
 import React,{Component} from 'react'
-import { Layout, Breadcrumb ,Table} from 'antd'
+import { Layout, Breadcrumb ,Table,Switch} from 'antd'
 import CustomLayout from 'components/custom-layout'
 import {connect} from 'react-redux'
 import {actionCreator} from './store'
+import { formatDate } from 'util'
 const {  Content } = Layout;
 
 class User extends Component{
+    componentDidMount(){
+        this.props.handlePage()
+    }
     render(){
-        const dataSource = [
-            {
-                key: '1',
-                username: 'admin',
-                isAdmin:'是',
-                isActive:'是',
-                email:'121@qq.com',
-                phone:'13412344321',
-                wxopenid:'sdfsgfgfd',
-                createAt:'2020-12-03'
-            }, 
-          ];
-          
+        const {list,current,pageSize,total,handlePage,isFetching,handleUpdateIsActive} = this.props
+        const dataSource = list
         const columns = [
             {
                 title: '用户名',
                 dataIndex: 'username',
                 key: 'username',
+                
             },
             {
                 title: '是否管理员',
                 dataIndex: 'isAdmin',
                 key: 'isAdmin',
+                render: isAdmin => isAdmin ? '是' : '否'
             },
             {
                 title: '是否有效用户',
                 dataIndex: 'isActive',
                 key: 'isActive',
+                render: (isActive,record) => <Switch 
+                    checkedChildren="是" 
+                    unCheckedChildren="否"
+                    checked={isActive=='1' ? true : false}
+                    onChange={
+                        checked=>{
+                            console.log(checked)
+                            const newActive = checked ? '1' : '0'
+                            console.log(newActive)
+                            handleUpdateIsActive(record._id, newActive)
+                        }
+                    }
+                />
             },
             {
                 title: '邮箱',
@@ -42,7 +50,7 @@ class User extends Component{
                 key: 'email',
               },
             {
-                title: '电话',
+                title: '手机',
                 dataIndex: 'phone',
                 key: 'phone',
             },
@@ -52,9 +60,10 @@ class User extends Component{
                 key: 'wxopenid',
             },
             {
-                title: '创建时间',
-                dataIndex: 'createAt',
-                key: 'createAt',
+                title: '注册时间',
+                dataIndex: 'createdAt',
+                key: 'createdAt',
+                render: createdAt => formatDate(createdAt)
             }
         ]
           
@@ -63,6 +72,8 @@ class User extends Component{
             <div className="User">
                 <CustomLayout style={{ padding: '0 24px 24px' }}>
                     <Breadcrumb style={{ margin: '16px 0' }}>
+                        <Breadcrumb.Item>首页</Breadcrumb.Item>
+                        <Breadcrumb.Item>用户</Breadcrumb.Item>
                         <Breadcrumb.Item>用户列表</Breadcrumb.Item>
                     </Breadcrumb>
                     <Content
@@ -73,7 +84,30 @@ class User extends Component{
                         minHeight: 280,
                         }}
                     >
-                    <Table dataSource={dataSource} columns={columns} />
+                    <Table  
+                        rowKey="_id" 
+                        dataSource={dataSource} 
+                        columns={columns} 
+                        pagination={
+                            {
+                                current:current,
+                                pageSize:pageSize,
+                                total:total,
+                                showSizeChanger:false
+                            }
+                        }
+                        onChange={
+                            (pagination)=>{
+                                handlePage(pagination.current)
+                            }
+                        }
+                        loading={
+                            {
+                                spinning: isFetching,
+                                tip:'数据正在请求中...'
+                            }
+                        }
+                    />
                     </Content>
                 </CustomLayout>
             </div>
@@ -81,12 +115,18 @@ class User extends Component{
     }
 }
 const mapStateToProps = (state)=>({
-    list:state.get('user').get('list')
+    list:state.get('user').get('list'),
+    current:state.get('user').get('current'),
+    pageSize:state.get('user').get('pageSize'),
+    total:state.get('user').get('total'),
+    isFetching: state.get('user').get('isFetching')
 })
 const mapDispatchToProps = (dispatch)=>({
-    
-    handle:()=>{
-        dispatch(actionCreator.getPageAction())
+    handlePage:(page)=>{
+        dispatch(actionCreator.getPageAction(page))
+    },
+    handleUpdateIsActive(id,newActive){
+        dispatch(actionCreator.getUpdateIsActive(id,newActive))
     }
 })
 
