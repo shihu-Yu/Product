@@ -1,7 +1,7 @@
 import React , {Component} from 'react'
 import { Layout, Breadcrumb, Form, Input, Button, Select  } from 'antd';
 import CustomLayout from 'components/custom-layout'
-import UploadImage from 'components/uploadImage'
+import UploadImage from 'components/upload-image'
 const { Option } = Select
 
 const layout = {
