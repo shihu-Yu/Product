@@ -1,7 +1,7 @@
 // api的配置文件
 export const SERVER =  process.env.NODE_ENV == 'production' ? 'http://api.sortmall.com' : ''
 export const VERSION = 'v1'
-export const CATEGORY_ICON_UPLOAD = SERVER + '/' + VERSION + '/catogoies/icons'
+export const CATEGORY_ICON_UPLOAD = SERVER + '/' + VERSION + '/categories/icons'
 export const API_CONFIG = {
     // 数组中第一个参数是请求地址 第二个参数是请求方法
 
@@ -11,4 +11,6 @@ export const API_CONFIG = {
     logout:                       ['/users/logout','get'],
     getUserList:                  ['/users/list','get'],
     updateUsersIsActive:          ['/users/isActive', 'put'], 
+    addCategory:                  ['/categories', 'post'], 
+    getLevelCategories:           ['/categories/levelCategories', 'get'], 
 }

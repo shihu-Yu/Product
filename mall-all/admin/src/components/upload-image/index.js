@@ -1,6 +1,7 @@
 import React , {Component,Fragment} from 'react'
 import { Upload, Modal } from 'antd'
 import { PlusOutlined } from '@ant-design/icons'
+import Item from 'antd/lib/list/Item';
 
 
 function getBase64(file) {
@@ -11,7 +12,17 @@ function getBase64(file) {
       reader.onerror = error => reject(error)
     });
   }
-   
+  function beforeUpload(file) {
+    const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
+    if (!isJpgOrPng) {
+        message.error('只能上传 JPG/PNG 文件!');
+    }
+    const isLt2M = file.size / 1024 / 1024 < 2;
+    if (!isLt2M) {
+        message.error('文件大大小不能超过 2MB!');
+    }
+    return isJpgOrPng && isLt2M;
+}   
 class UploadImage extends Component{
     
     constructor(props){
@@ -43,8 +54,13 @@ class UploadImage extends Component{
     }
   
     handleChange({ fileList }){
-       
-        console.log(fileList)
+        const imageUrlList = fileList.map(item=>{
+            if(item.response && item.response.status =="done"){
+                return item.response.url
+            }
+        }).join(',')
+        // 通过组件传递过来的方法把图片地址返回给组件
+        this.props.getImageUrlList(imageUrlList)
         this.setState({ 
             fileList:fileList
             })
@@ -52,6 +68,7 @@ class UploadImage extends Component{
   
     render(){
         const { previewVisible, previewImage, fileList, previewTitle } = this.state
+        const {action,max} = this.props
         const uploadButton = (
             <div>
               <PlusOutlined />
@@ -62,13 +79,13 @@ class UploadImage extends Component{
             <Fragment>
                 <Upload
                     name="file"
-                    action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                    action={action}
                     listType="picture-card"
                     fileList={fileList}
                     onPreview={this.handlePreview}
                     onChange={this.handleChange}
                 >
-                {fileList.length >= 8 ? null : uploadButton}
+                {fileList.length >= max ? null : uploadButton}
                 </Upload>
                 <Modal
                     visible={previewVisible}

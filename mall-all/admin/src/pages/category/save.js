@@ -2,6 +2,9 @@ import React , {Component} from 'react'
 import { Layout, Breadcrumb, Form, Input, Button, Select  } from 'antd';
 import CustomLayout from 'components/custom-layout'
 import UploadImage from 'components/upload-image'
+import {connect} from 'react-redux'
+import {actionCreator} from './store'
+import {CATEGORY_ICON_UPLOAD} from 'api/config'
 const { Option } = Select
 
 const layout = {
@@ -13,15 +16,19 @@ const tailLayout = {
 }
 const {  Content } = Layout;
 class CategorySave extends Component{
-    
+    componentDidMount(){
+        this.props.handleLevelCategories()
+    }
     render(){         
+        const {handleIcon,iconValidate,handleSave,categories,handleValidate} = this.props
+        const options = categories.map(category=><Option key={category._id} value={category._id}>{category.name}</Option>)
         return(
             <div className="Home">
                 <CustomLayout style={{ padding: '0 24px 24px' }}>
                     <Breadcrumb style={{ margin: '16px 0' }}>
                         <Breadcrumb.Item>首页</Breadcrumb.Item>
                         <Breadcrumb.Item>分类</Breadcrumb.Item>
-                        <Breadcrumb.Item>分类列表</Breadcrumb.Item>
+                        <Breadcrumb.Item>添加分类</Breadcrumb.Item>
                     </Breadcrumb>
                     <Content
                         className="site-layout-background"
@@ -31,7 +38,13 @@ class CategorySave extends Component{
                         minHeight: 280,
                         }}
                     >
-                       <Form {...layout} ref={this.formRef} name="control-ref" onFinish={(values)=>{console.log(values)}}>
+                       <Form 
+                            {...layout} 
+                            ref={this.formRef} 
+                            name="control-ref" 
+                            onFinish={handleSave}
+                            onFinishFailed={handleValidate}
+                        >
                             <Form.Item 
                                 name="pid" 
                                 label="父级分类" 
@@ -47,7 +60,8 @@ class CategorySave extends Component{
                                     onChange={()=>{}}
                                     allowClear
                                 >
-                                    <Option value="male">根分类</Option>
+                                    <Option value="0">根分类</Option>
+                                    {options}
                                 </Select>
                             </Form.Item>
                             <Form.Item 
@@ -75,16 +89,15 @@ class CategorySave extends Component{
                                 <Input />
                             </Form.Item>  
                             <Form.Item 
-                                name="icon" 
                                 label="手机分类图标" 
-                                rules={[
-                                    {
-                                        required: true,
-                                        message:"请上传手机分类图标"
-                                    }
-                                ]}
+                                required={true}
+                                {...iconValidate.toJS()}
                             >
-                                <UploadImage />
+                                <UploadImage
+                                 max={1}
+                                 action={CATEGORY_ICON_UPLOAD}
+                                 getImageUrlList={handleIcon}
+                                />
                             </Form.Item>                          
                             <Form.Item {...tailLayout}>
                                 <Button type="primary" htmlType="submit">
@@ -99,5 +112,23 @@ class CategorySave extends Component{
         )
     }
 }
+const mapStateToProps = (state)=>({
+    iconValidate:state.get('category').get('iconValidate'),
+    categories:state.get('category').get('categories')
+})
+const mapDispatchToProps = (dispatch)=>({
+    handleIcon:(icon)=>{
+        dispatch(actionCreator.setIcon(icon))
+    },
+    handleSave:(values)=>{
+        dispatch(actionCreator.getSaveAction(values))
+    },
+    handleLevelCategories:()=>{
+        dispatch(actionCreator.getLevelCategoriesAction())
+    },
+    handleValidate:()=>{
+        dispatch(actionCreator.getValidateAction())
+    }
+})
 
-export default CategorySave
+export default connect(mapStateToProps,mapDispatchToProps)(CategorySave)
