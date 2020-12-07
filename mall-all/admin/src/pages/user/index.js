@@ -8,7 +8,7 @@ const {  Content } = Layout;
 
 class User extends Component{
     componentDidMount(){
-        this.props.handlePage()
+        this.props.handlePage(1)
     }
     render(){
         const {list,current,pageSize,total,handlePage,isFetching,handleUpdateIsActive} = this.props
@@ -36,9 +36,7 @@ class User extends Component{
                     checked={isActive=='1' ? true : false}
                     onChange={
                         checked=>{
-                            console.log(checked)
                             const newActive = checked ? '1' : '0'
-                            console.log(newActive)
                             handleUpdateIsActive(record._id, newActive)
                         }
                     }

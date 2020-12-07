@@ -23,7 +23,8 @@ export const getPageAction = (page)=>{
             })
             if(result.code == 0){
                 dispatch(setPage(result.data))
-            }   
+            }
+              
         }
         catch(e){
             message.error('网络请求失败',1)
@@ -40,18 +41,19 @@ export const getUpdateIsActive = (id,newActive)=>{
     return async function(dispatch,getState){
         dispatch(getPageRequestStart())
         const page = getState().get('user').get('current')
-        console.log(newActive)
         try{
             const result = await api.updateUsersIsActive({
                 id:id,
                 isActive:newActive,
                 page:page
             })
-            console.log(result)
             if(result.code == 0){
                 dispatch(setPage(result.data))
                 message.success('修改成功',1)
-            }   
+            }
+            else{
+                message.error(result.message,1)
+            } 
         }
         catch(e){
             message.error('网络请求失败',1)

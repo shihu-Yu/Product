@@ -11,6 +11,13 @@ export const API_CONFIG = {
     logout:                       ['/users/logout','get'],
     getUserList:                  ['/users/list','get'],
     updateUsersIsActive:          ['/users/isActive', 'put'], 
+
     addCategory:                  ['/categories', 'post'], 
     getLevelCategories:           ['/categories/levelCategories', 'get'], 
+    getCategoriesList:            ['/categories/list', 'get'], 
+    updateCategoriesName:         ['/categories/name', 'put'], 
+    updateCategoriesMobileName:   ['/categories/mobileName', 'put'], 
+    updateCategoriesIsShow:       ['/categories/isShow', 'put'],
+    updateCategoriesIsFloor:      ['/categories/isFloor', 'put'],
+    updateCategoriesOrder:        ['/categories/order', 'put'],
 }
