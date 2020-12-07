@@ -4,7 +4,6 @@ import CustomLayout from 'components/custom-layout'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {actionCreator} from './store'
-import { formatDate } from 'util'
 const {  Content } = Layout;
 
 class CategoryList extends Component{
@@ -126,8 +125,9 @@ class CategoryList extends Component{
             },
             {
                 title: '操作',
-                dataIndex: 'createdAt',
-                key: 'createdAt',
+                render:(text,record)=><span>
+                    <Link to={'/category/save/' + record._id} >修改</Link>
+                </span>
             }
         ]
           

@@ -20,4 +20,5 @@ export const API_CONFIG = {
     updateCategoriesIsShow:       ['/categories/isShow', 'put'],
     updateCategoriesIsFloor:      ['/categories/isFloor', 'put'],
     updateCategoriesOrder:        ['/categories/order', 'put'],
+    getCategoryDetail:            ['/categories/detail', 'get'],
 }

@@ -5,5 +5,6 @@ export const PAGE_REQUEST_END = 'category@page_request_end'
 export const SET_ICON = 'category@set_icon'
 export const SET_ICON_ERROR = 'category@set_icon_error'
 export const SET_CATEGORIES = 'category@set_categories'
+export const SET_CATEGORY_DETAIL = 'category@set_category_detail'
 
 

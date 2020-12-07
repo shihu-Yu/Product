@@ -16,11 +16,29 @@ const tailLayout = {
 }
 const {  Content } = Layout;
 class CategorySave extends Component{
+    constructor(props){
+        super(props)
+        this.state = {
+            id:this.props.match.params.categoryId
+        }
+    }
+    
     componentDidMount(){
         this.props.handleLevelCategories()
+        if(this.state.id){
+            this.props.handleCategoryDetail(this.state.id)
+        }
     }
     render(){         
-        const {handleIcon,iconValidate,handleSave,categories,handleValidate} = this.props
+        const {
+            handleIcon,
+            iconValidate,
+            handleSave,
+            categories,
+            handleValidate,
+            category,
+        } = this.props
+        console.log(category.name)
         const options = categories.map(category=><Option key={category._id} value={category._id}>{category.name}</Option>)
         return(
             <div className="Home">
@@ -54,6 +72,7 @@ class CategorySave extends Component{
                                         message:"请选择父级分类名称"
                                     }
                                 ]}
+                                
                             >
                                 <Select
                                     placeholder="请选择父级分类"
@@ -73,6 +92,7 @@ class CategorySave extends Component{
                                         message:"请输入分类名称"
                                     }
                                 ]}
+                                
                             >
                                 <Input />
                             </Form.Item> 
@@ -114,7 +134,8 @@ class CategorySave extends Component{
 }
 const mapStateToProps = (state)=>({
     iconValidate:state.get('category').get('iconValidate'),
-    categories:state.get('category').get('categories')
+    categories:state.get('category').get('categories'),
+    category:state.get('category').get('category'),
 })
 const mapDispatchToProps = (dispatch)=>({
     handleIcon:(icon)=>{
@@ -128,7 +149,10 @@ const mapDispatchToProps = (dispatch)=>({
     },
     handleValidate:()=>{
         dispatch(actionCreator.getValidateAction())
-    }
+    },
+    handleCategoryDetail:(id)=>{
+        dispatch(actionCreator.getCategoryDetailAction(id))
+    },
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(CategorySave)
