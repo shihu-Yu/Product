@@ -236,30 +236,6 @@ export const getLevelCategoriesAction = ()=>{
 }
 
 
-const setCategoryDetail = (payload)=>({
-    type:types.SET_CATEGORY_DETAIL,
-    payload:payload
-})
 
-export const getCategoryDetailAction = (id)=>{
-    return async function(dispatch){
-        dispatch(getPageRequestStart())
-        try{
-            const result = await api.getCategoryDetail({
-                id:id
-            })
-            if(result.code == 0){
-                dispatch(setCategoryDetail(result.data))
-            }   
-        }
-        catch(e){
-            message.error('网络请求失败',1)
-        }
-        finally{
-            dispatch(getPageRequestEnd())
-        }
-        
-    }
 
-}
 
