@@ -13,7 +13,7 @@ export const API_CONFIG = {
     updateUsersIsActive:          ['/users/isActive', 'put'], 
 
     addCategory:                  ['/categories', 'post'], 
-    updateCategory:                  ['/categories', 'put'], 
+    updateCategory:               ['/categories', 'put'], 
     getLevelCategories:           ['/categories/levelCategories', 'get'], 
     getCategoriesList:            ['/categories/list', 'get'], 
     updateCategoriesName:         ['/categories/name', 'put'], 
@@ -22,4 +22,10 @@ export const API_CONFIG = {
     updateCategoriesIsFloor:      ['/categories/isFloor', 'put'],
     updateCategoriesOrder:        ['/categories/order', 'put'],
     getCategoryDetail:            ['/categories/detail', 'get'],
+
+    addAttr:                      ['/attrs', 'post'], 
+    updateAttr:                   ['/attrs', 'put'], 
+    getAttrsDetail:               ['/attrs/detail', 'get'],
+    updateAttrsOrder:             ['/attrs/order', 'put'],
+    getAttrList:                 ['/attrs/list', 'get'], 
 }

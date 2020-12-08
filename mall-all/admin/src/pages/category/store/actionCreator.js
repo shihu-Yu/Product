@@ -185,7 +185,7 @@ const setCategories = (payload)=>({
     type:types.SET_CATEGORIES,
     payload:payload
 })
-export const getSaveAction = (values)=>{
+export const getSaveAction = (values,id)=>{
     return async function(dispatch,getState){
         try{
             const icon = getState().get('category').get('icon')
@@ -193,10 +193,17 @@ export const getSaveAction = (values)=>{
                 dispatch(setIconError())
                 return
             }
+            let request = api.addCategory
+            let saveMessage = "添加分类成功"
             values.icon = icon
-            const result = await api.addCategory(values)
+            if(id){
+                values.id = id 
+                request = api.updateCategory
+                saveMessage = "修改分类成功"
+            }
+            const result = await request(values)
             if(result.code == 0){
-                message.success('添加分类成功',1)
+                message.success(saveMessage,1)
                 dispatch(setCategories(result.data))
             }else{
                 message.error(result.message,1)

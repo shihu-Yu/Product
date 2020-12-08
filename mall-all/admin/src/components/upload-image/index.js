@@ -48,6 +48,13 @@ class UploadImage extends Component{
             }
         }
     }
+    
+    componentDidMount(){
+        //针对修改后再添加是初始化
+        this.setState({
+            fileList:[]
+        })
+    }
     handleCancel(){
         this.setState({ previewVisible: false })
     }

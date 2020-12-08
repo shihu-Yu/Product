@@ -133,7 +133,7 @@ class CategoryList extends Component{
           
          
         return(
-            <div className="User">
+            <div className="Category">
                 <CustomLayout style={{ padding: '0 24px 24px' }}>
                     <div style={{
                             display: 'flex',

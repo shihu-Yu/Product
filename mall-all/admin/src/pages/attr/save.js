@@ -1,12 +1,9 @@
 import React , {Component} from 'react'
-import { Layout, Breadcrumb, Form, Input, Button, Select  } from 'antd';
+import { Layout, Breadcrumb, Form, Input, Button } from 'antd';
 import CustomLayout from 'components/custom-layout'
-import UploadImage from 'components/upload-image'
 import {connect} from 'react-redux'
 import {actionCreator} from './store'
-import {CATEGORY_ICON_UPLOAD} from 'api/config'
 import api from 'api'
-const { Option } = Select
 
 const layout = {
     labelCol: { span: 6 },
@@ -20,55 +17,38 @@ class CategorySave extends Component{
     constructor(props){
         super(props)
         this.state = {
-            id:this.props.match.params.categoryId
+            id:this.props.match.params.attrId
         }
         this.formRef = React.createRef()
     }
     
    async componentDidMount(){
-        this.props.handleLevelCategories()
         //当点击修改时才会触发这里的代码 通过查看 id 是否存在来判断从那个地方进入到的save界面
         if(this.state.id){
-            const result = await  api.getCategoryDetail({id:this.state.id})
+            const result = await  api.getAttrsDetail({id:this.state.id})
             if(result.code == 0){
                 const data = result.data
+                console.log(data)
                 this.formRef.current.setFieldsValue({
-                    pid:data.pid,
                     name:data.name,
-                    mobileName:data.mobileName            
+                    key:data.key,
+                    value:data.value           
                 })
-                this.props.handleIcon(data.icon)
             }
-        }else{
-            this.props.handleIcon('')
         }
     }
     render(){         
         const {
-            handleIcon,
-            iconValidate,
             handleSave,
-            categories,
-            handleValidate,
-            icon,
         } = this.props
-        const options = categories.map(category=><Option key={category._id} value={category._id}>{category.name}</Option>)
-        let fileList = []
-        if(icon){
-            fileList.push({
-                uid: '-1',
-                name: 'image.png',
-                status: 'done',
-                url: icon,
-            })
-        }
+        
         return(
-            <div className="Category">
+            <div className="Attr">
                 <CustomLayout style={{ padding: '0 24px 24px' }}>
                     <Breadcrumb style={{ margin: '16px 0' }}>
                         <Breadcrumb.Item>首页</Breadcrumb.Item>
-                        <Breadcrumb.Item>分类</Breadcrumb.Item>
-                        <Breadcrumb.Item>{this.state.id ? "编辑分类" : "添加分类" }</Breadcrumb.Item>
+                        <Breadcrumb.Item>属性</Breadcrumb.Item>
+                        <Breadcrumb.Item>{this.state.id ? "编辑属性" : "添加属性" }</Breadcrumb.Item>
                     </Breadcrumb>
                     <Content
                         className="site-layout-background"
@@ -83,35 +63,28 @@ class CategorySave extends Component{
                             ref={this.formRef} 
                             name="control-ref" 
                             onFinish={(values)=>{handleSave(values,this.state.id)}}
-                            onFinishFailed={handleValidate}
                             ref={this.formRef}
                         >
                             <Form.Item 
-                                name="pid" 
-                                label="父级分类" 
+                                name="name" 
+                                label="属性名称" 
                                 rules={[
                                     {
                                         required: true,
-                                        message:"请选择父级分类名称"
+                                        message:"请输入属性名称"
                                     }
                                 ]}
                                 
                             >
-                                <Select
-                                    placeholder="请选择父级分类"
-                                    
-                                >
-                                    <Option value="0">根分类</Option>
-                                    {options}
-                                </Select>
+                                <Input />
                             </Form.Item>
                             <Form.Item 
-                                name="name" 
-                                label="分类名称" 
+                                name="key" 
+                                label="属性键" 
                                 rules={[
                                     {
                                         required: true,
-                                        message:"请输入分类名称"
+                                        message:"请输入属性键"
                                     }
                                 ]}
                                 
@@ -119,29 +92,17 @@ class CategorySave extends Component{
                                 <Input />
                             </Form.Item> 
                             <Form.Item 
-                                name="mobileName" 
-                                label="手机分类名称" 
+                                name="value" 
+                                label="属性值" 
                                 rules={[
                                     {
                                         required: true,
-                                        message:"请输入手机分类名称"
+                                        message:"请输入属性值"
                                     }
                                 ]}
                             >
                                 <Input />
-                            </Form.Item>  
-                            <Form.Item 
-                                label="手机分类图标" 
-                                required={true}
-                                {...iconValidate.toJS()}
-                            >
-                                <UploadImage
-                                 max={1}
-                                 action={CATEGORY_ICON_UPLOAD}
-                                 getImageUrlList={handleIcon}
-                                 fileList={fileList}
-                                />
-                            </Form.Item>                          
+                            </Form.Item>                   
                             <Form.Item {...tailLayout}>
                                 <Button type="primary" htmlType="submit">
                                     Submit
@@ -156,23 +117,14 @@ class CategorySave extends Component{
     }
 }
 const mapStateToProps = (state)=>({
-    iconValidate:state.get('category').get('iconValidate'),
-    categories:state.get('category').get('categories'),
-    icon:state.get('category').get('icon'),
+   
 })
 const mapDispatchToProps = (dispatch)=>({
-    handleIcon:(icon)=>{
-        dispatch(actionCreator.setIcon(icon))
-    },
+   
     handleSave:(values,id)=>{
         dispatch(actionCreator.getSaveAction(values,id))
     },
-    handleLevelCategories:()=>{
-        dispatch(actionCreator.getLevelCategoriesAction())
-    },
-    handleValidate:()=>{
-        dispatch(actionCreator.getValidateAction())
-    },
+   
     
 })
 
