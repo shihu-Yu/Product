@@ -35,23 +35,31 @@ class ProductSave extends Component{
         console.log('targetKeys: ', nextTargetKeys);
         console.log('direction: ', direction);
         console.log('moveKeys: ', moveKeys);
-      };
-    
-      handleSelectChange(sourceSelectedKeys, targetSelectedKeys){
+    };
+
+    handleSelectChange(sourceSelectedKeys, targetSelectedKeys){
         this.setState({ selectedKeys: [...sourceSelectedKeys, ...targetSelectedKeys] });
-    
+
         console.log('sourceSelectedKeys: ', sourceSelectedKeys);
         console.log('targetSelectedKeys: ', targetSelectedKeys);
-      };
+    };
+    componentDidMount(){
+        this.props.handleLevelCategories()
+        this.props.handleAllAttrs()
+    }
     render(){         
         const {
             handleSave,
+            categories,
+            AllAttrs
         } = this.props
         const {
             targetKeys,
-            selectedKeys
+            selectedKeys,
         } = this.state
-        const options = [<Option key="0" value="0">根分类</Option>]
+        console.log(AllAttrs)
+        const options = categories.map(category=><Option key={category._id} value={category._id}>{category.name}</Option>)
+        const dataSource = AllAttrs.map(attr=>({key: attr._id, title: attr.name}))
         return(
             <div className="ProductSave">
                 <CustomLayout style={{ padding: '0 24px 24px' }}>
@@ -113,11 +121,12 @@ class ProductSave extends Component{
                                 rules={[
                                     {
                                         required: true,
-                                        message:"商品价格"
-                                    }
+                                        message:"请输入商品价格"
+                                    },
+                                    
                                 ]}
                             >
-                                <InputNumber />
+                                <InputNumber min={'0'}/>
                             </Form.Item> 
                             <Form.Item 
                                 name="stock" 
@@ -129,21 +138,21 @@ class ProductSave extends Component{
                                     }
                                 ]}
                             >
-                                <InputNumber />
+                                <InputNumber min={'0'} />
                             </Form.Item> 
                             <Form.Item 
                                 name="payNum" 
                                 label="支付人数" 
                                 
                             >
-                                <InputNumber />
+                                <InputNumber min={'0'}/>
                             </Form.Item>
                             <Form.Item 
                                   name="attrs"
                                   label="商品属性"
                             >
                                 <Transfer
-                                    dataSource={[{ key: '0', title: '服装尺寸' }, { key: '1', title: '电脑颜色' }]}
+                                    dataSource={dataSource}
                                     titles={['未选属性', '已选属性']}
                                     targetKeys={targetKeys}
                                     selectedKeys={selectedKeys}
@@ -194,15 +203,20 @@ class ProductSave extends Component{
     }
 }
 const mapStateToProps = (state)=>({
-    
+    categories:state.get('product').get('categories'),
+    AllAttrs:state.get('product').get('AllAttrs'),
 })
 const mapDispatchToProps = (dispatch)=>({
    
     handleSave:(values,id)=>{
         dispatch(actionCreator.getSaveAction(values,id))
     },
-   
-    
+    handleLevelCategories:()=>{
+        dispatch(actionCreator.getLevelCategoriesAction())
+    },
+    handleAllAttrs:()=>{
+        dispatch(actionCreator.getAllAttrsAction())
+    },
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(ProductSave)

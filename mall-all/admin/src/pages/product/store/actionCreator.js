@@ -12,7 +12,15 @@ const setPage = (payload)=>({
     type:types.SET_PAGE,
     payload:payload
 })
-
+const setCategories = (payload)=>({
+    type:types.SET_CATEGORIES,
+    payload:payload,
+   
+})
+const setAllAttrs = (payload)=>({
+    type:types.SET_ALL_ATTRS,
+    payload:payload
+})
 // 获取分类列表
 export const getPageAction = (page)=>{
     return async function(dispatch){
@@ -93,7 +101,37 @@ export const getSaveAction = (values,id)=>{
         }   
     }
 }
+// 获取分类数据
+export const getLevelCategoriesAction = ()=>{
+    return async function(dispatch){
+        dispatch(getPageRequestStart())
+        try{
+            const result = await api.getLevelCategories({
+                level:3
+            })
+            if(result.code == 0){
+                dispatch(setCategories(result.data))
+            }   
+        }
+        catch(e){
+            message.error('网络请求失败',1)
+        }
+    } 
+}
 
 
-
+export const getAllAttrsAction = ()=>{
+    return async function(dispatch){
+        dispatch(getPageRequestStart())
+        try{
+            const result = await api.getAllAttrs()
+            if(result.code == 0){
+                dispatch(setAllAttrs(result.data))
+            }   
+        }
+        catch(e){
+            message.error('网络请求失败',1)
+        }
+    } 
+}
 

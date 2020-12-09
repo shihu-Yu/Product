@@ -8,12 +8,8 @@ let defaultState = fromJS({
        pageSize:0,
        current:1,
        isFetching:false,
-       icon:'',
-       iconValidate:{
-            help:'',
-            validateStatus:''
-       },
        categories:[],
+       AllAttrs:[],
 }) 
 
 function reducer(state=defaultState,action) {
@@ -24,7 +20,7 @@ function reducer(state=defaultState,action) {
             current,
             total,
             pageSize,
-            isFetching
+            isFetching,
         })
     }
     if(action.type == types.PAGE_REQUEST_START){
@@ -33,25 +29,13 @@ function reducer(state=defaultState,action) {
     if(action.type == types.PAGE_REQUEST_END){
         return state.set('isFetching',false)
     }
-    if(action.type == types.SET_ICON){
-        return state.merge({
-            icon:action.payload,
-            iconValidate:fromJS({
-                help:'',
-                validateStatus:''
-            })
-        })
-    }
-    if(action.type == types.SET_ICON_ERROR){
-        return state.set('iconValidate',fromJS({
-            help:'请上传手机分类图片',
-            validateStatus:'error'
-        }))
-    }
+    
     if(action.type == types.SET_CATEGORIES){
         return state.set('categories',action.payload)
     }
-    
+    if(action.type == types.SET_ALL_ATTRS){
+        return state.set('AllAttrs',action.payload)
+    }
     return state
     
 }      
