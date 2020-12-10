@@ -173,43 +173,29 @@ export const getUpdateOrderAction = (id,newOrder)=>{
 
 
 
-export const setIcon = (payload)=>({
-    type:types.SET_ICON,
-    payload:payload
-})
 
-const setIconError = ()=>({
-    type:types.SET_ICON_ERROR,
-})
 const setCategories = (payload)=>({
     type:types.SET_CATEGORIES,
     payload:payload
 })
-export const getSaveAction = (values,id)=>{
+export const getSaveAction = (values)=>{
     return async function(dispatch,getState){
         try{
-            const icon = getState().get('category').get('icon')
-            if(!icon){
-                dispatch(setIconError())
-                return
-            }
             let request = api.addCategory
             let saveMessage = "添加分类成功"
-            values.icon = icon
-            if(id){
-                values.id = id 
+            if(values.id){
                 request = api.updateCategory
                 saveMessage = "修改分类成功"
             }
             const result = await request(values)
             if(result.code == 0){
                 message.success(saveMessage,1)
-                dispatch(setCategories(result.data))
             }else{
                 message.error(result.message,1)
             }
         }
         catch(e){
+            console.log(e)
             message.error('网络请求失败',1)
         }   
     }

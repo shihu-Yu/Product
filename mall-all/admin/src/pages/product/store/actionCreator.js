@@ -26,9 +26,10 @@ export const getPageAction = (page)=>{
     return async function(dispatch){
         dispatch(getPageRequestStart())
         try{
-            const result = await api.getCategoriesList({
+            const result = await api.getProductList({
                 page:page
             })
+            console.log(result.data)
             if(result.code == 0){
                 dispatch(setPage(result.data))
             }   
@@ -48,7 +49,7 @@ export const getPageAction = (page)=>{
 export const getUpdateOrderAction = (id,newOrder)=>{
     return async function(dispatch,getState){
         dispatch(getPageRequestStart())
-        const page = getState().get('category').get('current')
+        const page = getState().get('product').get('current')
         try{
             const result = await api.updateCategoriesOrder({
                 id:id,
@@ -72,31 +73,25 @@ export const getUpdateOrderAction = (id,newOrder)=>{
     } 
 }
 
-export const getSaveAction = (values,id)=>{
+export const getSaveAction = (values)=>{
     return async function(dispatch,getState){
         try{
-            const icon = getState().get('category').get('icon')
-            if(!icon){
-                dispatch(setIconError())
-                return
-            }
-            let request = api.addCategory
-            let saveMessage = "添加分类成功"
-            values.icon = icon
-            if(id){
-                values.id = id 
-                request = api.updateCategory
-                saveMessage = "修改分类成功"
+            
+            let request = api.addProduct
+            let saveMessage = "添加商品成功"
+            if(values.id){
+                request = api.updateProduct
+                saveMessage = "修改商品成功"
             }
             const result = await request(values)
             if(result.code == 0){
                 message.success(saveMessage,1)
-                dispatch(setCategories(result.data))
             }else{
                 message.error(result.message,1)
             }
         }
         catch(e){
+            console.log(e)
             message.error('网络请求失败',1)
         }   
     }

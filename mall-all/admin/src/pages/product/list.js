@@ -8,7 +8,7 @@ const {  Content } = Layout;
 
 class ProductList extends Component{
     componentDidMount(){
-        // this.props.handlePage(1)
+        this.props.handlePage(1)
     }
     render(){
         const {
@@ -54,7 +54,7 @@ class ProductList extends Component{
           
          
         return(
-            <div className="Product">
+            <div className="ProductList">
                 <CustomLayout style={{ padding: '0 24px 24px' }}>
                     <div style={{
                             display: 'flex',
@@ -111,11 +111,11 @@ class ProductList extends Component{
     }
 }
 const mapStateToProps = (state)=>({
-    list:state.get('category').get('list'),
-    current:state.get('category').get('current'),
-    pageSize:state.get('category').get('pageSize'),
-    total:state.get('category').get('total'),
-    isFetching: state.get('category').get('isFetching')
+    list:state.get('product').get('list'),
+    current:state.get('product').get('current'),
+    pageSize:state.get('product').get('pageSize'),
+    total:state.get('product').get('total'),
+    isFetching: state.get('product').get('isFetching')
 })
 const mapDispatchToProps = (dispatch)=>({
     handlePage:(page)=>{

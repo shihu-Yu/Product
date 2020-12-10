@@ -3,13 +3,14 @@ import {fromJS} from 'immutable'
 import { actionCreator } from '.'
 // 定义一个初始化的state
 let defaultState = fromJS({
-       list:[],
-       total:0,
-       pageSize:0,
-       current:1,
-       isFetching:false,
-       categories:[],
-       AllAttrs:[],
+        list:[],
+        total:0,
+        pageSize:0,
+        current:1,
+        isFetching:false,
+        categories:[],
+        AllAttrs:[],
+       
 }) 
 
 function reducer(state=defaultState,action) {
@@ -36,6 +37,7 @@ function reducer(state=defaultState,action) {
     if(action.type == types.SET_ALL_ATTRS){
         return state.set('AllAttrs',action.payload)
     }
+    
     return state
     
 }      
