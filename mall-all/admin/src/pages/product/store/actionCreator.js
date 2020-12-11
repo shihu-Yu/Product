@@ -22,14 +22,18 @@ const setAllAttrs = (payload)=>({
     payload:payload
 })
 // 获取分类列表
-export const getPageAction = (page)=>{
+export const getPageAction = (page,keyword)=>{
     return async function(dispatch){
         dispatch(getPageRequestStart())
         try{
-            const result = await api.getProductList({
+            const options = {
                 page:page
-            })
-            console.log(result.data)
+            }
+            if(keyword){
+                options.keyword = keyword
+            }
+            const result = await api.getProductList(options)
+            
             if(result.code == 0){
                 dispatch(setPage(result.data))
             }   

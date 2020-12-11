@@ -64,30 +64,29 @@ class AttrList extends Component{
         return(
             <div className="Attr">
                 <CustomLayout style={{ padding: '0 24px 24px' }}>
-                    <div style={{
-                            display: 'flex',
-                            justifyContent: 'space-between',
-                            alignItems: 'center',
-                        }}
-                    >
                         <Breadcrumb style={{ margin: '16px 0' }}>
                             <Breadcrumb.Item>首页</Breadcrumb.Item>
                             <Breadcrumb.Item>属性</Breadcrumb.Item>
                             <Breadcrumb.Item>属性列表</Breadcrumb.Item>
-                            
                         </Breadcrumb>
-                        <Link to='/attr/save'>
-                                <Button type="primary">新增属性</Button>
-                        </Link>
-                    </div>
                     <Content
                         className="site-layout-background"
                         style={{
-                        padding: 24,
-                        margin: 0,
-                        minHeight: 280,
+                            padding: 24,
+                            margin: 0,
+                            minHeight: 280,
                         }}
                     >
+                    <div style={{
+                            display: 'flex',
+                            flexDirection: 'row-reverse',
+                            marginBottom:'20px'
+                        }}
+                    >
+                        <Link to='/category/save'>
+                            <Button type="primary">新增分类</Button>
+                        </Link>
+                    </div>
                     <Table  
                         rowKey="_id" 
                         dataSource={dataSource} 

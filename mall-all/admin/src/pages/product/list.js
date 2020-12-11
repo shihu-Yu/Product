@@ -1,14 +1,16 @@
 import React,{Component} from 'react'
-import { Layout, Breadcrumb ,Table,Button,InputNumber,Switch} from 'antd'
+import { Layout, Breadcrumb ,Table,Button,InputNumber,Switch,Input} from 'antd'
 import CustomLayout from 'components/custom-layout'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {actionCreator} from './store'
+const { Search } = Input
 const {  Content } = Layout;
 
 class ProductList extends Component{
     componentDidMount(){
         this.props.handlePage(1)
+        
     }
     render(){
         const {
@@ -18,6 +20,7 @@ class ProductList extends Component{
             total,
             handlePage,
             isFetching,
+            keyword,
             handleUpdateIsShow,
             handleUpdateStatus,
             handleUpdateIsHot,
@@ -26,10 +29,22 @@ class ProductList extends Component{
         const dataSource = list
         const columns = [
             {
-                title: '商品详情',
+                title: '名称',
                 dataIndex: 'name',
-                width:'50%'
-               
+                width:'50%',
+                ellipsis:true,
+                render:(name)=>{
+                    if(keyword){
+                        // 搜索显示高亮
+                    console.log(keyword)
+
+                        const reg = new RegExp('('+keyword+')','ig')
+                        const html = name.replace(reg,'<b style="color:red;">$1</b>')
+                        return <span dangerouslySetInnerHTML={{ __html: html }}></span>
+                    }else{
+                        return name
+                    }
+                }
             },
             {
                 title: '是否显示首页',
@@ -50,12 +65,12 @@ class ProductList extends Component{
                 </Switch>
             },
             {
-                title: '是否上架',
+                title: '上架/下架',
                 dataIndex: 'status',
                 width:'10%',
                 render:(isShow,record)=><Switch
-                    checkedChildren='显示'
-                    unCheckedChildren='隐藏'
+                    checkedChildren='上架'
+                    unCheckedChildren='下架'
                     checked={isShow == 1 ? true : false}
                     onChange={
                         checked=>{
@@ -73,8 +88,8 @@ class ProductList extends Component{
                 dataIndex: 'isHot',
                 width:'10%',
                 render:(isShow,record)=><Switch
-                    checkedChildren='显示'
-                    unCheckedChildren='隐藏'
+                    checkedChildren='是'
+                    unCheckedChildren='否'
                     checked={isShow == 1 ? true : false}
                     onChange={
                         checked=>{
@@ -83,7 +98,6 @@ class ProductList extends Component{
                         }
                     }
                 >
-
                 </Switch>
             },
             {
@@ -114,22 +128,13 @@ class ProductList extends Component{
         return(
             <div className="ProductList">
                 <CustomLayout style={{ padding: '0 24px 24px' }}>
-                    <div style={{
-                            display: 'flex',
-                            justifyContent: 'space-between',
-                            alignItems: 'center',
-                        }}
-                    >
+                    
                         <Breadcrumb style={{ margin: '16px 0' }}>
                             <Breadcrumb.Item>首页</Breadcrumb.Item>
                             <Breadcrumb.Item>商品</Breadcrumb.Item>
                             <Breadcrumb.Item>商品列表</Breadcrumb.Item>
                             
                         </Breadcrumb>
-                        <Link to='/product/save'>
-                                <Button type="primary">新增商品</Button>
-                        </Link>
-                    </div>
                     <Content
                         className="site-layout-background"
                         style={{
@@ -138,6 +143,23 @@ class ProductList extends Component{
                         minHeight: 280,
                         }}
                     >
+                    <div style={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            marginBottom:'20px'
+                        }}
+                    >
+                        <Search
+                            placeholder="请输入商品关键字"
+                            allowClear
+                            enterButton
+                            onSearch={(value)=>{handlePage(1,value)}}
+                            style={{ width: 400, margin: '0 10px' }}
+                        />
+                        <Link to='/product/save'>
+                            <Button type="primary">新增商品</Button>
+                        </Link>
+                    </div>
                     <Table  
                         rowKey="_id" 
                         dataSource={dataSource} 
@@ -152,7 +174,7 @@ class ProductList extends Component{
                         }
                         onChange={
                             (pagination)=>{
-                                handlePage(pagination.current)
+                                handlePage(pagination.current,keyword)
                             }
                         }
                         loading={
@@ -173,11 +195,12 @@ const mapStateToProps = (state)=>({
     current:state.get('product').get('current'),
     pageSize:state.get('product').get('pageSize'),
     total:state.get('product').get('total'),
-    isFetching: state.get('product').get('isFetching')
+    isFetching: state.get('product').get('isFetching'),
+    keyword: state.get('product').get('keyword')
 })
 const mapDispatchToProps = (dispatch)=>({
-    handlePage:(page)=>{
-        dispatch(actionCreator.getPageAction(page))
+    handlePage:(page,keyword)=>{
+        dispatch(actionCreator.getPageAction(page,keyword))
     },
     handleUpdateIsShow(id,isShow){
         dispatch(actionCreator.getUpdateIsShowAction(id,isShow))

@@ -22,7 +22,7 @@ class ProductSave extends Component{
     constructor(props){
         super(props)
         this.state = {
-            id:this.props.match.params.categoryId,
+            id:this.props.match.params.productId,
             targetKeys:[],
             selectedKeys:[], 
             mainImage:'',
@@ -49,20 +49,17 @@ class ProductSave extends Component{
     
     handleChange(nextTargetKeys, direction, moveKeys){
         this.setState({ targetKeys: nextTargetKeys });
-    
-       
     };
 
     handleSelectChange(sourceSelectedKeys, targetSelectedKeys){
         this.setState({ selectedKeys: [...sourceSelectedKeys, ...targetSelectedKeys] });
-
     };
     handleMainImage(image){
         this.setState({
             mainImage:image,
             mainImageValidate:{
-                    help:'',
-                    validateStatus:''
+                help:'',
+                validateStatus:''
             },
         })
     }
@@ -113,9 +110,36 @@ class ProductSave extends Component{
             detail:detail
         })
     }
-    componentDidMount(){
+    async componentDidMount(){
         this.props.handleLevelCategories()
         this.props.handleAllAttrs()
+        if(this.state.id){
+            // 回填数据
+            const result = await  api.getProductDetail({id:this.state.id})
+            if(result.code == 0){
+                const data = result.data
+                console.log(data)
+                this.formRef.current.setFieldsValue({
+                    category:data.category._id,
+                    name:data.name,
+                    description:data.description,
+                    price:data.price,
+                    stock:data.stock,
+                    payNums:data.payNums
+                })
+                this.setState({
+                    targetKeys:data.attrs.map(attr=>attr._id),
+                    mainImage:data.mainImage,
+                    images:data.images,
+                    detail:data.detail
+                })
+            }
+        }else{//新增
+            this.setState({
+                mainImage: '',
+                images: ''
+            })
+        }
     }
     render(){         
         const {
@@ -127,9 +151,39 @@ class ProductSave extends Component{
             selectedKeys,
             mainImageValidate,
             imagesValidate,
+            mainImage,
+            images,
+            detail
         } = this.state
         const options = categories.map(cate => <Option key={cate._id} value={cate._id}>{cate.name}</Option>)
         const dataSource = AllAttrs.map(attr=>({key: attr._id, title: attr.name}))
+        let mainImageFileList = []
+        let imagesFileList = []
+        if(mainImage){
+            mainImageFileList.push({
+                uid: '-1',
+                name: 'image.png',
+                status: 'done',
+                url: mainImage,
+            })
+        }else{
+            mainImageFileList = []
+        }
+
+        if(images){
+            imagesFileList = images.split(',').map((url,index)=>({
+                uid: index,
+                name: 'image.png',
+                status: 'done',
+                url:url,
+                response:{//为了修改的时候可以取到原本的值
+                    status: "done",
+                    url: url
+                }  
+            }))
+        }else{
+            imagesFileList = []
+        }
         return(
             <div className="ProductSave">
                 <CustomLayout style={{ padding: '0 24px 24px' }}>
@@ -259,7 +313,7 @@ class ProductSave extends Component{
                                  max={1}
                                  action={PRODUCT_IMAGE_UPLOAD}
                                  getImageUrlList={this.handleMainImage}
-                                 fileList={[]}
+                                 fileList={mainImageFileList}
                                 />
                             </Form.Item>   
                             <Form.Item 
@@ -271,7 +325,7 @@ class ProductSave extends Component{
                                  max={3}
                                  action={PRODUCT_IMAGE_UPLOAD}
                                  getImageUrlList={this.handleImages}
-                                 fileList={[]}
+                                 fileList={imagesFileList}
                                 />
                             </Form.Item> 
                             <Form.Item 
@@ -280,7 +334,7 @@ class ProductSave extends Component{
                                 wrapperCol={{ span: 16 }}
                             >
                                 <RichEditor
-                                    data="hello"
+                                    data={detail}
                                     uploadUrl={PRODUCT_DETAIL_IMAGES_UPLOAD}
                                     getData = {this.handleDetail}
                                 /> 
@@ -302,8 +356,7 @@ const mapStateToProps = (state)=>({
     AllAttrs:state.get('product').get('AllAttrs'),
    
 })
-const mapDispatchToProps = (dispatch)=>({
-   
+const mapDispatchToProps = (dispatch)=>({   
     handleSave:(values)=>{
         dispatch(actionCreator.getSaveAction(values))
     },

@@ -10,18 +10,18 @@ let defaultState = fromJS({
         isFetching:false,
         categories:[],
         AllAttrs:[],
-       
 }) 
 
 function reducer(state=defaultState,action) {
     if(action.type == types.SET_PAGE){
-        const { list,current,pageSize,total,isFetching } = action.payload
+        const { list,current,pageSize,total,isFetching ,keyword} = action.payload
         return state.merge({
             list,
             current,
             total,
             pageSize,
             isFetching,
+            keyword,
         })
     }
     if(action.type == types.PAGE_REQUEST_START){
