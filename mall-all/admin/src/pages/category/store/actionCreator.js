@@ -12,7 +12,13 @@ const setPage = (payload)=>({
     type:types.SET_PAGE,
     payload:payload
 })
-
+const setCategories = (payload)=>({
+    type:types.SET_CATEGORIES,
+    payload:payload
+})
+const clearPage = (payload) => ({
+    type: types.CLEAR_PAGE
+})
 // 获取分类列表
 export const getPageAction = (page)=>{
     return async function(dispatch){
@@ -174,10 +180,7 @@ export const getUpdateOrderAction = (id,newOrder)=>{
 
 
 
-const setCategories = (payload)=>({
-    type:types.SET_CATEGORIES,
-    payload:payload
-})
+
 export const getSaveAction = (values)=>{
     return async function(dispatch,getState){
         try{
@@ -190,6 +193,9 @@ export const getSaveAction = (values)=>{
             const result = await request(values)
             if(result.code == 0){
                 message.success(saveMessage,1)
+                dispatch(setCategories(result.data))
+                dispatch(clearPage())
+                
             }else{
                 message.error(result.message,1)
             }

@@ -45,13 +45,91 @@ export const getPageAction = (page)=>{
 
 }
 
-
+export const getUpdateIsShowAction = (id,newIsShow)=>{
+    return async function(dispatch,getState){
+        dispatch(getPageRequestStart())
+        const page = getState().get('product').get('current')
+        try{
+            const result = await api.updateProductIsShow({
+                id:id,
+                isShow:newIsShow,
+                page:page
+            })
+            if(result.code == 0){
+                dispatch(setPage(result.data))
+                message.success('修改成功',1)
+            }
+            else{
+                message.error(result.message,1)
+            }   
+        }
+        catch(e){
+            message.error('网络请求失败',1)
+        }
+        finally{
+            dispatch(getPageRequestEnd())
+        }
+    } 
+}
+export const getUpdateStatusAction = (id,newStatus)=>{
+    return async function(dispatch,getState){
+        dispatch(getPageRequestStart())
+        const page = getState().get('product').get('current')
+        try{
+            const result = await api.updateProductStatus({
+                id:id,
+                status:newStatus,
+                page:page
+            })
+            if(result.code == 0){
+                dispatch(setPage(result.data))
+                message.success('修改成功',1)
+            }
+            else{
+                message.error(result.message,1)
+            }   
+        }
+        catch(e){
+            console.log(e)
+            message.error('网络请求失败',1)
+        }
+        finally{
+            dispatch(getPageRequestEnd())
+        }
+    } 
+}
+export const getUpdateIsHotAction = (id,newIsHot)=>{
+    return async function(dispatch,getState){
+        dispatch(getPageRequestStart())
+        const page = getState().get('product').get('current')
+        try{
+            const result = await api.updateProductIsHot({
+                id:id,
+                isHot:newIsHot,
+                page:page
+            })
+            if(result.code == 0){
+                dispatch(setPage(result.data))
+                message.success('修改成功',1)
+            }
+            else{
+                message.error(result.message,1)
+            }   
+        }
+        catch(e){
+            message.error('网络请求失败',1)
+        }
+        finally{
+            dispatch(getPageRequestEnd())
+        }
+    } 
+}
 export const getUpdateOrderAction = (id,newOrder)=>{
     return async function(dispatch,getState){
         dispatch(getPageRequestStart())
         const page = getState().get('product').get('current')
         try{
-            const result = await api.updateCategoriesOrder({
+            const result = await api.updateProductOrder({
                 id:id,
                 order:newOrder,
                 page:page

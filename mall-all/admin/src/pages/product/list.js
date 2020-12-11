@@ -1,5 +1,5 @@
 import React,{Component} from 'react'
-import { Layout, Breadcrumb ,Table,Button,InputNumber} from 'antd'
+import { Layout, Breadcrumb ,Table,Button,InputNumber,Switch} from 'antd'
 import CustomLayout from 'components/custom-layout'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
@@ -18,21 +18,78 @@ class ProductList extends Component{
             total,
             handlePage,
             isFetching,
+            handleUpdateIsShow,
+            handleUpdateStatus,
+            handleUpdateIsHot,
             handleUpdateOrder,
         } = this.props
         const dataSource = list
         const columns = [
             {
-                title: '名称',
+                title: '商品详情',
                 dataIndex: 'name',
-                key: 'name',
+                width:'50%'
                
+            },
+            {
+                title: '是否显示首页',
+                dataIndex: 'isShow',
+                width:'10%',
+                render:(isShow,record)=><Switch
+                    checkedChildren='显示'
+                    unCheckedChildren='隐藏'
+                    checked={isShow == 1 ? true : false}
+                    onChange={
+                        checked=>{
+                            const newIsShow = checked ? '1' : '0'
+                            handleUpdateIsShow(record._id, newIsShow)
+                        }
+                    }
+                >
+
+                </Switch>
+            },
+            {
+                title: '是否上架',
+                dataIndex: 'status',
+                width:'10%',
+                render:(isShow,record)=><Switch
+                    checkedChildren='显示'
+                    unCheckedChildren='隐藏'
+                    checked={isShow == 1 ? true : false}
+                    onChange={
+                        checked=>{
+                            const newStatus = checked ? '1' : '0'
+                            handleUpdateStatus(record._id, newStatus)
+                        }
+                    }
+                >
+
+                </Switch>
             },
             
             {
+                title: '是否热门',
+                dataIndex: 'isHot',
+                width:'10%',
+                render:(isShow,record)=><Switch
+                    checkedChildren='显示'
+                    unCheckedChildren='隐藏'
+                    checked={isShow == 1 ? true : false}
+                    onChange={
+                        checked=>{
+                            const newIsHot = checked ? '1' : '0'
+                            handleUpdateIsHot(record._id, newIsHot)
+                        }
+                    }
+                >
+
+                </Switch>
+            },
+            {
                 title: '排序',
                 dataIndex: 'order',
-                key: 'order',
+                width:'10%',
                 render:(order,record)=><InputNumber
                         defaultValue={order}
                         onBlur={ev=>{
@@ -46,6 +103,7 @@ class ProductList extends Component{
             },
             {
                 title: '操作',
+                width:'10%',
                 render:(text,record)=><span>
                     <Link to={'/product/save/' + record._id} >修改</Link>
                 </span>
@@ -120,6 +178,15 @@ const mapStateToProps = (state)=>({
 const mapDispatchToProps = (dispatch)=>({
     handlePage:(page)=>{
         dispatch(actionCreator.getPageAction(page))
+    },
+    handleUpdateIsShow(id,isShow){
+        dispatch(actionCreator.getUpdateIsShowAction(id,isShow))
+    },
+    handleUpdateStatus(id,newStatus){
+        dispatch(actionCreator.getUpdateStatusAction(id,newStatus))
+    },
+    handleUpdateIsHot(id,newIsHot){
+        dispatch(actionCreator.getUpdateIsHotAction(id,newIsHot))
     },
     handleUpdateOrder(id,newOrder){
         dispatch(actionCreator.getUpdateOrderAction(id,newOrder))

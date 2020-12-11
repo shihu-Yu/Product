@@ -229,7 +229,7 @@ class ProductSave extends Component{
                                 <InputNumber min={'0'} />
                             </Form.Item> 
                             <Form.Item 
-                                name="payNum" 
+                                name="payNums" 
                                 label="支付人数" 
                                 
                             >
