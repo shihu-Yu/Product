@@ -118,7 +118,6 @@ class ProductSave extends Component{
             const result = await  api.getProductDetail({id:this.state.id})
             if(result.code == 0){
                 const data = result.data
-                console.log(data)
                 this.formRef.current.setFieldsValue({
                     category:data.category._id,
                     name:data.name,

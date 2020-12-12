@@ -1,5 +1,5 @@
 import React,{Component} from 'react'
-import { Layout, Breadcrumb ,Table,Button,InputNumber,Switch,Input} from 'antd'
+import { Layout, Breadcrumb ,Table,Button,InputNumber,Switch,Input,Divider} from 'antd'
 import CustomLayout from 'components/custom-layout'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
@@ -120,6 +120,8 @@ class ProductList extends Component{
                 width:'10%',
                 render:(text,record)=><span>
                     <Link to={'/product/save/' + record._id} >修改</Link>
+                    <Divider type="vertical" />
+                    <Link to={'/product/detail/' + record._id} >查看</Link>
                 </span>
             }
         ]
