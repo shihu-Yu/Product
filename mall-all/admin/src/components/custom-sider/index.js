@@ -38,13 +38,13 @@ export class  CustomSider  extends Component{
                             <NavLink to="/product"><ShopOutlined />商品管理</NavLink>
                         </Menu.Item>
                         <Menu.Item key="6">
-                            <NavLink to="/product"><OrderedListOutlined />订单管理</NavLink>
+                            <NavLink to="/order"><OrderedListOutlined />订单管理</NavLink>
                         </Menu.Item>
                         <Menu.Item key="7">
-                            <NavLink to="/product"><DollarOutlined />广告管理</NavLink>
+                            <NavLink to="/ad"><DollarOutlined />广告管理</NavLink>
                         </Menu.Item>
                         <Menu.Item key="8">
-                            <NavLink to="/product"><LockOutlined />密码管理</NavLink>
+                            <NavLink to="/pwd"><LockOutlined />密码管理</NavLink>
                         </Menu.Item>
                     </Menu>
                 </Sider>

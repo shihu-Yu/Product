@@ -1,21 +1,13 @@
 import React , {Component} from 'react'
-import { Layout, Breadcrumb, Form, Input, Button, Tag , InputNumber ,Transfer } from 'antd';
+import { Layout, Breadcrumb, Form, Input, Button, Tag , InputNumber ,Image  } from 'antd';
 import CustomLayout from 'components/custom-layout'
-import UploadImage from 'components/upload-image'
-import {connect} from 'react-redux'
-import {actionCreator} from './store'
-import {PRODUCT_IMAGE_UPLOAD,PRODUCT_DETAIL_IMAGES_UPLOAD} from 'api/config'
-import RichEditor from 'components/rich-editor'
 import api from 'api'
+const {  Content } = Layout;
 
 const layout = {
     labelCol: { span: 6 },
     wrapperCol: { span: 8 },
 };
-const tailLayout = {
-    wrapperCol: { offset: 6, span: 8 },
-}
-const {  Content } = Layout;
 
 class ProductDetail extends Component{
     constructor(props){
@@ -32,7 +24,6 @@ class ProductDetail extends Component{
             const result = await  api.getProductDetail({id:this.state.id})
             if(result.code == 0){
                 const data = result.data
-                console.log(data)
                 this.formRef.current.setFieldsValue({
                     category:data.category.name,
                     name:data.name,
@@ -48,10 +39,14 @@ class ProductDetail extends Component{
         }
     }
     render(){         
-        const {attrs,mainImage}=this.state.product
+        const {attrs,mainImage,images,detail}=this.state.product
         let attrTag = null
+        let imagesWrap = null
         if(attrs){
             attrTag = attrs.map((attr)=><Tag key={attr._id}>{attr.key}</Tag>)
+        }
+        if(images){
+            imagesWrap = images.split(',').map((url, index)=><Image width={100} key={index} src={url} />)
         }
         return(
             <div className="ProductSave">
@@ -114,35 +109,30 @@ class ProductDetail extends Component{
                                 <InputNumber disabled={true}/>
                             </Form.Item>
                             <Form.Item 
-                                  name="attrs"
                                   label="商品属性"
                             >
                                 {attrTag}
                             </Form.Item>
                             <Form.Item 
                                 label="封面图片" 
-                                required={true}
                             >
-                                
+                                <Image
+                                    width={100}
+                                    src={mainImage}
+                                />
                             </Form.Item>   
                             <Form.Item 
                                 label="商品图片" 
-                                required={true}
                             >
-                                
+                                {imagesWrap}
                             </Form.Item> 
                             <Form.Item 
                                 label="商品详情" 
                                 labelCol={ { span: 6 }}
                                 wrapperCol={{ span: 16 }}
                             >
-                                
+                                <div style={{marginTop:6}} dangerouslySetInnerHTML={{__html:detail}}></div>
                             </Form.Item>                      
-                            <Form.Item {...tailLayout}>
-                                <Button type="primary" htmlType="submit">
-                                    Submit
-                                </Button>
-                            </Form.Item>
                         </Form>
                     </Content>
                 </CustomLayout>

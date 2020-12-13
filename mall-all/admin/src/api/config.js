@@ -4,6 +4,7 @@ export const VERSION = 'v1'
 export const CATEGORY_ICON_UPLOAD = SERVER + '/' + VERSION + '/categories/icons'
 export const PRODUCT_IMAGE_UPLOAD = SERVER + '/' + VERSION + '/products/images'
 export const PRODUCT_DETAIL_IMAGES_UPLOAD = SERVER + '/' + VERSION + '/products/detailImages'
+export const Ad_IMAGE_UPLOAD = SERVER + '/' + VERSION + '/ads/image'
 export const API_CONFIG = {
     // 数组中第一个参数是请求地址 第二个参数是请求方法
 
@@ -43,4 +44,15 @@ export const API_CONFIG = {
     updateProductIsHot:             ['/products/isHot', 'put'],
     updateProductOrder:             ['/products/order', 'put'],
     getProductDetail:               ['/products/detail', 'get'],
+
+    // 广告
+    addAd:                          ['/ads', 'post'], 
+    updateAd:                       ['/ads', 'put'], 
+    getAdsList:                     ['/ads/list', 'get'], 
+    updateAdsIsShow:                ['/ads/isShow', 'put'],
+    updateAdsOrder:                 ['/ads/order', 'put'],
+    getAdsDetail:                   ['/ads/detail', 'get'],
+
+    // 更新密码
+    updateUsersPwd:                 ['/users/pwd', 'put'],
 }
