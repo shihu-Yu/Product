@@ -83,8 +83,8 @@ class AttrList extends Component{
                             marginBottom:'20px'
                         }}
                     >
-                        <Link to='/category/save'>
-                            <Button type="primary">新增分类</Button>
+                        <Link to='/attr/save'>
+                            <Button type="primary">新增属性</Button>
                         </Link>
                     </div>
                     <Table  

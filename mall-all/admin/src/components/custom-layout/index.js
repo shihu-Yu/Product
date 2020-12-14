@@ -1,9 +1,7 @@
 import React , {Component} from 'react'
 import { Layout, Menu} from 'antd';
-import { UserOutlined, HomeOutlined, UnorderedListOutlined  } from '@ant-design/icons';
 import {CustomHeader} from '../custom-header'
 import {CustomSider} from '../custom-sider'
-import { NavLink} from 'react-router-dom'
 import './index.less'
 const { SubMenu } = Menu;
 const { Header, Sider } = Layout;

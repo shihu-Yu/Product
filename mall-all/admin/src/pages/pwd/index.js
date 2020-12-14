@@ -2,11 +2,8 @@ import React , {Component} from 'react'
 import { Layout, Breadcrumb, Form, Input, Button, message  } from 'antd';
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import CustomLayout from 'components/custom-layout'
-
-
-
+import {removeUsername,goLogin} from 'util'
 import api from 'api'
-
 const layout = {
     labelCol: { span: 6 },
     wrapperCol: { span: 8 },
@@ -47,6 +44,9 @@ class Pwd extends Component{
                 password:password
             })
             if(result.code == 0){
+                await api.logout()
+                removeUsername()
+                goLogin()
                 message.success('密码修改成功',1)
             }
         } 

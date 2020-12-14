@@ -1,5 +1,5 @@
 import React,{Component} from 'react'
-import { Layout, Breadcrumb ,Table,Button,Input,Switch,InputNumber} from 'antd'
+import { Layout, Breadcrumb ,Table,Button,Input,Switch,InputNumber,Image} from 'antd'
 import CustomLayout from 'components/custom-layout'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
@@ -61,8 +61,8 @@ class CategoryList extends Component{
                 dataIndex: 'icon',
                 key: 'icon',
                 width:'15%',
-                render:icon=><img
-                    style={{width:'50px',height:'50px',borderRadius:'50%'}}
+                render:icon=><Image
+                    width={50}
                     src={icon}
                 />
                 

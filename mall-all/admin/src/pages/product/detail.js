@@ -46,7 +46,7 @@ class ProductDetail extends Component{
             attrTag = attrs.map((attr)=><Tag key={attr._id}>{attr.key}</Tag>)
         }
         if(images){
-            imagesWrap = images.split(',').map((url, index)=><Image width={100} key={index} src={url} />)
+            imagesWrap = images.split(',').map((url, index)=><Image  width={100} height={80} key={index} src={url} />)
         }
         return(
             <div className="ProductSave">
