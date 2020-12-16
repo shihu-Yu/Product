@@ -21,6 +21,29 @@ var page = {
         $('#btn-submit').on('click',function(){
             _this.submit()
         })
+        // 回车提交
+        $('input').on('keydown',function(ev){
+            if(ev.keyCode == 13){
+                _this.submit()
+            }
+        })
+        // 获取验证码
+        $('#btn-verify-code').on('click',function(){
+            // 显示验证码框
+            $('.captcha-box').show()
+            // 获取验证码
+            _this.getCaptcha()
+            
+        })
+        // 点击图形验证码 刷新验证码
+        $('.captcha-img').on('click',function(){
+            // 获取验证码
+            _this.getCaptcha()
+        })
+        // 发送获取验证码请求
+        $('#btn-captcha-code').on('click',function(){
+            _this.getVerifyCodeRequest()
+        })
     },
     // 注册的提交
     submit:function(){
@@ -86,9 +109,60 @@ var page = {
         }
         result.status = true
         return result
+    },
+    // 获取验证码
+    getCaptcha:function(){
+        api.getCaptcha({
+            success:function(result){
+                // 把请求回来的图形验证码 插入到前端界面
+                $('.captcha-img').html(result)
+            }
+        })
+    },
+    // 获取验证码请求
+    getVerifyCodeRequest:function(){
+        // 获取输入的手机号以及验证码 并且验证
+        var phone = $.trim($('input[name="phone"]').val())
+        var captchaCode = $.trim($('input[name="captcha-code"]').val())
+        if(!_util.validate(phone,'require')){
+            formErr.show('手机号不能为空') 
+            return 
+        }
+        if(!_util.validate(phone,'phone')){
+            formErr.show('手机号格式不正确')
+            return 
+        }
+        if(!_util.validate(captchaCode,'require')){
+            formErr.show('图形验证码不能为空') 
+            return 
+        }
+        if(!_util.validate(captchaCode,'captchaCode')){
+            formErr.show('图形验证码格式不正确')
+            return 
+        }
+        formErr.hide()
+        // 发送请求
+        api.getRegisterVerifyCode({
+            data:{
+                phone:phone,
+                captchaCode:captchaCode
+
+            },
+            success:function(){
+                _util.showSuccessMsg('手机验证码发送成功')
+                $('input[name="captcha-code"]').val('')
+                // 获取成功之后隐藏该获取界面
+                $('.captcha-box').hide()
+            },  
+            error:function(msg){
+                formErr.show(msg)
+            }
+        })
+    },
+    handleTimer:function(){
+        
     }
 }
-
 
 $(function(){
     page.init()
