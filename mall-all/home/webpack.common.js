@@ -21,6 +21,7 @@ module.exports = {
         'user-login': './src/pages/user-login/index.js',
         'user-dynamic-login': './src/pages/user-dynamic-login/index.js',
         'user-register': './src/pages/user-register/index.js',
+        'result': './src/pages/result/index.js',
     },
     output: {
         filename: 'js/[name]-[chunkhash].bundle.js',//指定打包后的文件名称,不用带路径
@@ -105,6 +106,7 @@ module.exports = {
         new htmlWebpackPlugin(getHtmlCofig('user-login','用户登陆')),
         new htmlWebpackPlugin(getHtmlCofig('user-dynamic-login','用户动态登录')),
         new htmlWebpackPlugin(getHtmlCofig('user-register','用户注册')),
+        new htmlWebpackPlugin(getHtmlCofig('result','结果提示')),
         new MiniCssExtractPlugin({
             filename: 'css/[name].[fullhash].css'//使用模版指定输出的css文件的位置和文件名称
         }),

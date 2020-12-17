@@ -14,6 +14,7 @@ var  formErr = {
 var page = {
     init:function(){
         this.bindevent()
+        this.handleTimer()
     },
     bindevent:function(){
         var _this = this
@@ -29,6 +30,9 @@ var page = {
         })
         // 获取验证码
         $('#btn-verify-code').on('click',function(){
+            if($(this).hasClass('disable-btn')){
+                return
+            }
             // 显示验证码框
             $('.captcha-box').show()
             // 获取验证码
@@ -60,15 +64,15 @@ var page = {
                 // 验证成功
                 formErr.hide()
                  // 提交
-                 api.register({
-                     data:formData,
-                     success:function(result){
-                         console.log('ok...')
-                     },
-                     error:function(msg){
-                         formErr.show(msg)
-                     }
-                 })
+                api.register({
+                    data:formData,
+                    success:function(result){
+                        _util.goResult('register')
+                    },
+                    error:function(msg){
+                        formErr.show(msg)
+                    }
+                })
             }else{
                 formErr.show(result.msg)
             }
@@ -121,6 +125,7 @@ var page = {
     },
     // 获取验证码请求
     getVerifyCodeRequest:function(){
+        var _this = this
         // 获取输入的手机号以及验证码 并且验证
         var phone = $.trim($('input[name="phone"]').val())
         var captchaCode = $.trim($('input[name="captcha-code"]').val())
@@ -153,14 +158,42 @@ var page = {
                 $('input[name="captcha-code"]').val('')
                 // 获取成功之后隐藏该获取界面
                 $('.captcha-box').hide()
+                window.localStorage.setItem('getRegisterVerifyCodeTime',Date.now())
+                _this.handleTimer()
             },  
             error:function(msg){
                 formErr.show(msg)
             }
         })
     },
+    // 处理验证码倒计时
     handleTimer:function(){
-        
+        var _this = this
+        var $btn = $('#btn-verify-code')
+        var getRegisterVerifyCodeTime = window.localStorage.getItem('getRegisterVerifyCodeTime')
+        if(getRegisterVerifyCodeTime){
+            var totalSecond = 60
+            var passedSecond = parseInt((Date.now() - getRegisterVerifyCodeTime) / 1000)
+            var restSecond = totalSecond - passedSecond
+            if(restSecond > 0){
+                $btn.addClass('disable-btn')
+                $btn.html(restSecond + 's后重试')
+                _this.timer = setInterval(function(){
+                    var passedSecond = parseInt((Date.now() - getRegisterVerifyCodeTime) / 1000)
+                    var restSecond = totalSecond - passedSecond
+                    if(restSecond <= 0){
+                        clearInterval(_this.timer)
+                        $btn.removeClass('disable-btn').html('获取验证码') 
+                    }else{
+                        $btn.html(restSecond + 's后重试').off('click')
+                    }
+                },1000)
+            }else{
+                clearInterval(_this.timer)
+                $btn.removeClass('disable-btn').html('获取验证码') 
+                window.localStorage.removeItem('getRegisterVerifyCodeTime')
+            }
+        }
     }
 }
 
