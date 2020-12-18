@@ -1,5 +1,7 @@
 require('./index.less')
 var api = require('api')
+var _util = require('util')
+var tpl = require('./nav.tpl')
 var page = {
     init:function(){
         this.$cartContent  = $('.cart-content')
@@ -30,10 +32,12 @@ var page = {
         $('.top .cart-box').hover(function(){
             // 显示数据面板
             _this.$cartContent.show()
+            _this.$cartContent.html('<div class="loader"></div>')
+
             // 发送请求
-            api.addCarts({
+            api.getCarts({
                 success:function(cart){
-                    _util.render(cart)
+                    _this.render(cart)
                 },
                 error:function(){
                     _this.$cartContent.html('<span class="empty-cart">获取购物车失败,请稍后再试!</span>')
@@ -56,10 +60,11 @@ var page = {
         })
     },
     render:function(cart){
+        var _this = this 
         if(cart.cartList.length == 0){
             _this.$cartContent.html('<span class="empty-cart">购物车中还没有商品,赶紧来购买吧!</span>')
         }else{
-            var html = _util.render(cart)
+            var html = _util.render(tpl,cart)
             _this.$cartContent.html(html)
         }
     },
