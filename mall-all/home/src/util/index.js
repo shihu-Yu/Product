@@ -1,3 +1,4 @@
+var Hogan = require('hogan.js')
 module.exports={
     validate:function(value,type){
          //非空验证
@@ -41,5 +42,10 @@ module.exports={
     goResult: function (type) {
         window.location.href = './result.html?type=' + type
     },
+    render:function(tpl,data){
+        var templete = Hogan.compile(tpl)
+        var html = templete.render(data)
+        return html 
+    }
 }
 
