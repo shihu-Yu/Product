@@ -1,0 +1,171 @@
+/*焦点区域*/
+.focus {
+	margin-bottom: 50px;
+}
+.focus .container{
+	height: 440px;
+	box-sizing: border-box;
+}
+.focus .container .parent-categories{
+	width: 208px;
+	height: 440px;
+	background-color: white;
+	margin-top: 30px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	float: left;
+}
+.focus .categories .parent-categories .parent-categories-item{
+    line-height: 40px;
+    padding-left: 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+.focus .categories .parent-categories .parent-categories-item:hover{
+    background-color: #eee;
+    color:#1890ff;
+}
+.focus .categories .parent-categories .parent-categories-item.active{
+    background-color: #eee;
+    color:#1890ff;
+}
+.categories .parent-categories .keyword{
+	padding-top:20px;
+	margin-left: 10px;
+	margin-right: 10px;	
+	font-size: 14px;
+}
+.focus .categories .child-categories{
+	display: none;
+    position: absolute;
+    top:176px;
+    left:428px;
+    width:904px;
+    height: 440px;
+    z-index: 2000;
+    background-color: #fff;
+    box-sizing: border-box;
+    padding: 10px 50px;
+    overflow: hidden;
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+}
+.focus .categories .child-item{
+    padding: 10px;
+    width: 80px;
+    float: left;
+    margin:0 10px 10px 0;
+}
+.focus .categories .child-item  img{
+    width: 100%;
+    height: 80px;
+}
+.focus .categories .child-item  p{
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    margin-top: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.swiper-container{
+	float: left;
+	margin-top: 30px;
+    position: relative;
+    height: 440px;
+}
+
+/* 轮播图公共样式
+---------------------------------------------------------------- */     
+
+/*焦点区域*/
+/*--------------------------------------------------------*/
+/*热销区域*/
+.hot{
+	margin-bottom: 40px;
+}
+.hot .cord{
+	float: left;
+	margin-top: 20px;
+	margin-left: -218px;
+	height: 300px;
+	box-sizing: border-box;
+	background-image: linear-gradient(#007aff,#52c41a);
+	font-size: 35px;
+	color: #fff;
+	text-align: center;
+	padding-top: 80px;
+	box-shadow: 1px 2px 2px rgba(0,0,0,.3);
+	cursor: pointer;
+}
+.hot .product{
+	width: 860px;
+	float: left;
+	margin-top: 20px;
+}
+.hot .product .product-list .product-item img{
+	padding: 10px 10px 10px 14px;
+	
+}
+.hot .product .product-number{
+	padding-left: 10px;
+}
+.hot .product-item:last-child{
+	margin-right: -2px;
+}
+/*热销区域*/
+/*--------------------------------------------------------*/
+/*楼层区域*/
+ .floor .container .floor-swap1 {
+ 	margin-bottom: 40px;
+ }
+ .floor .container .floor-swap1 .hd{
+	font-size: 16px;
+	color: #52c41a;
+}
+ .floor .container .floor-swap1 .hd h2{
+ 	border-bottom: 1px solid #52c41a;
+	margin-bottom: 10px;
+	padding-bottom: 5px;
+ }
+ .floor .container  .product-item{
+	height: 300px;
+    background-color: #fff;
+    margin-bottom: 20px;
+ }
+
+.floor .floor-product .product-item:nth-child(5n+0){
+	margin-right: 0px;
+}
+
+/*楼层区域*/
+/* 电梯 */
+.elevator{
+    position: fixed;
+    top:50%;
+    left:50%;
+    margin-left: -660px;
+}
+.elevator-item,.backToTop{
+    display: block;
+    width: 40px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    border-top: 1px solid #d9d9d9;
+}
+.elevator-item:hover .elevator-item-num,
+.backToTop:hover .elevator-item-num,
+.elevator-active .elevator-item-num{
+    display: none;
+}
+.elevator-item:hover .elevator-item-text,
+.backToTop:hover .elevator-item-text,
+.elevator-active .elevator-item-text{
+    display: block;
+    color: #52c41a;
+}
+.elevator-item-text{
+    display: none;
+}
+/* 电梯 */

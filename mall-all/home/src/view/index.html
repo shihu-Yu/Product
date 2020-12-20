@@ -9,8 +9,55 @@
 
     <%= require('html-loader!./common/search.html') %>
 
-     index content
-
+    <div class="focus">
+		<div class="container">
+			<div class="categories col-1 col-gap">
+				<div class="parent-categories">
+				
+				</div>
+			    <div class="child-categories">
+                    
+                </div>
+			</div>
+			<div class="swiper-container col-4">
+                <div class="swiper-wrapper">
+                </div>
+                <!-- 如果需要分页器 -->
+                <div class="swiper-pagination"></div>
+                <!-- 如果需要导航按钮 -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+		</div>
+	</div>
+	<!--焦点区域-->
+        <!--热销区域-->
+        <div class="hot">
+            <div class="container clearfix">
+                <div class="cord col-1 col-gap">
+                    <h4>热销推荐</h4>
+                    <i class="icon-Cart"></i>
+                </div>
+                <div class="product clearfix">
+                    <ul class="product-list col-4">
+                    
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--热销区域-->
+        <!--楼层区域-->
+        <div class="floor">
+            <div class="container">
+                
+            </div>
+        </div>
+        <!--楼层区域-->
+        <!-- S 电梯 -->
+        <div id="elevator" class="elevator container">
+            
+        </div>
+<!-- E 电梯 -->
     <%= require('html-loader!./common/footer.html') %>
 
 </body>
