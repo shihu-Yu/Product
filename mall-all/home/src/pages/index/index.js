@@ -50,12 +50,12 @@ var page = {
                 scrollTop:0
             })            
         })
-        this.$categories.on('mouseenter','.keyword-item',function(){
+        this.$categories.on('mouseenter','.parent-categories-item',function(){
             //显示子分类面板
             $('.child-categories').show()
             clearTimeout(_this.timer)
             var $elem = $(this)
-            $('.keyword-item').removeClass('active')
+            $('.parent-categories-item').removeClass('active')
             $elem.addClass('active')
             _this.timer = setTimeout(function(){
                 var id = $elem.data('id')
@@ -76,7 +76,7 @@ var page = {
         })
         this.$categories.on('mouseleave',function(){
             //清空面板并且隐藏
-            $('.keyword-item').removeClass('active')
+            $('.parent-categories-item').removeClass('active')
             $('.child-categories').html('').hide()
         })            
     },
@@ -127,10 +127,11 @@ var page = {
         var _this = this
         api.getHotProducts({
             success:function(data){
+                console.log(data)
                 var html = _util.render(hotTpl,{
                     products:data
                 })
-                $('.hot-bd').html(html)            
+                $('.hot .product').html(html)            
             }
         })
     },
