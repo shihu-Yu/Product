@@ -1,13 +1,7 @@
 <!--1.模版-->
 <template>
-    <div class="home">
-        <p>{{2 | formatPrice}}</p>
-        <van-tabbar >
-            <van-tabbar-item icon="home-o">标签</van-tabbar-item>
-            <van-tabbar-item icon="search">标签</van-tabbar-item>
-            <van-tabbar-item icon="friends-o">标签</van-tabbar-item>
-            <van-tabbar-item icon="setting-o">标签</van-tabbar-item>
-        </van-tabbar>
+    <div class="category">
+        category page
     </div>
 </template>
 
@@ -15,7 +9,7 @@
 <script>
 //导出当前组件的配置
 export default {
-    name:'Home',
+    name:'Category',
    
 }
 </script>

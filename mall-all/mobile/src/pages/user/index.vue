@@ -1,7 +1,7 @@
 <!--1.模版-->
 <template>
-    <div class="cart">
-        cart page
+    <div class="user">
+        user page
     </div>
 </template>
 
@@ -9,7 +9,7 @@
 <script>
 //导出当前组件的配置
 export default {
-    name:'Cart',
+    name:'User',
    
 }
 </script>
