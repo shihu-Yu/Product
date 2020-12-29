@@ -4,7 +4,7 @@
             <van-tabbar-item  
                 icon="home-o"
                 to="/"
-            
+                route
             >
                 首页
             </van-tabbar-item>
@@ -33,27 +33,13 @@
 
 
 <script>
-import {CHANGE_TAB_BAR_ACTIVE} from './store/types'
-import {mapMutations, mapState} from 'vuex'
 export default {
-    methods:{
-        ...mapMutations([CHANGE_TAB_BAR_ACTIVE]),
-        onChange(index){
-            console.log(index)
+    data(){
+        return{
+            active:0
         }
     },
-    computed:{
-        active:{
-            get(){
-                let active = sessionStorage.getItem('tabBarActiveIndex') || this.$store.state.tabBar.active
-                active = parseInt(active)
-                return active
-            },
-            set(index){
-                this[CHANGE_TAB_BAR_ACTIVE](index)
-            }
-        }
-    }
+   
 }
 </script>
 

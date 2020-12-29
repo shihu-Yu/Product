@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import home from '../pages/home/store'
-import tabBar from 'components/tabbar/store'
 //1.安装Vuex
 Vue.use(Vuex)
 
@@ -9,7 +8,6 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
     modules:{
         home,
-        tabBar
     }
 })
 

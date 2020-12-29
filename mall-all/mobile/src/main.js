@@ -9,8 +9,9 @@ import router from './router'
 //引入store实例
 import store from './store'
 //引入过滤器
-import filters from './filters/'
-
+import filters from './filters'
+//引入amfe-flexible计算rem 
+import 'amfe-flexible'
 Object.keys(filters).forEach(key=>Vue.filter(key,filters[key]))
 //关闭生产环境模式更改提示
 Vue.config.productionTip = false
