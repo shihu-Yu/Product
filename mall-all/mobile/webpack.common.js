@@ -1,5 +1,4 @@
 const path = require('path')
-
 module.exports = {
     pluginOptions: {
         'style-resources-loader': {
@@ -7,7 +6,11 @@ module.exports = {
             patterns: [
                 path.resolve(__dirname, './src/assets/less/index.less')
             ]
-        }
+        },
+        'postcss-pxtorem': {
+            rootValue: 37.5,
+            propList: ['*'],
+          },
     },
     css: {
         loaderOptions: {
@@ -16,7 +19,7 @@ module.exports = {
                 modifyVars: {
                     'hack': 'true; @import "' + path.resolve(__dirname, './src/assets/less/them.less')+'";'
                 }
-            }
+            },
         }
     },
     chainWebpack: config => {

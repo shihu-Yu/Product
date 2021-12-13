@@ -18,5 +18,8 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
+.app{
+    background-color: #ebe1e1fa;
+    font-size: 10px;
+}
 </style>

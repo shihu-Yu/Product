@@ -127,7 +127,6 @@ var page = {
         var _this = this
         api.getHotProducts({
             success:function(data){
-                console.log(data)
                 var html = _util.render(hotTpl,{
                     products:data
                 })
@@ -145,14 +144,13 @@ var page = {
                 })
                 $('.floor-wrap').html(floorsHtml)
                 
-                _this.$floor = $('.floor .floor-box')
+                _this.$floor = $('.floor .floor-swap1')
                 
                 //加载电梯
                 var elevatorHtml = _util.render(elevatorTpl,{
                     floors:floors
                 })
                 $('.elevator').html(elevatorHtml) 
-
                 _this.$elevatorItems = _this.$elevator.find('.elevator-item')
                 _this.$backToTop = _this.$elevator.find('.backToTop')                
             }
@@ -172,7 +170,6 @@ var page = {
                 }
             });
         }
-
         return num;
     },    
     //设置电梯
@@ -187,9 +184,6 @@ var page = {
         }        
     }
 }
-
-
-
 $(function() {
     page.init()
 })

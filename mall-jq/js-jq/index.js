@@ -145,7 +145,6 @@
         },
         
         getParentCategoriesData:function(){
-            
             var _this = this
             utils.ajax({
                 url:'/categories/arrayCategories',

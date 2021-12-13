@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QQ音乐</title>
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/iconfont/iconfont.css">
+</head>
+<body>
+    <div class="app">
+        <div class="wrap">
+            <!-- 导航栏 -->
+            <div class="header">
+                <div class="content">
+                    <!-- 导航栏顶部 -->
+                    <div class="hd_top">
+                        <div class="hd_logo" id="hd_logo">
+                            <a href="#">
+                                <img src="./images/logo.png" alt="">
+                            </a>
+                        </div>
+                        <ul class="nav">
+                            <li class="hd_nav_item">
+                                <a href="#">音乐馆</a>
+                            </li>
+                            <li class="hd_nav_item">
+                                <a href="#">我的音乐</a>
+                            </li>
+                            <li class="hd_nav_item">
+                                <a href="#">客户端</a>
+                            </li>
+                            <li class="hd_nav_item">
+                                <a href="#">开放平台</a>
+                            </li>
+                            <li class="hd_nav_item">
+                                <a href="#">VIP</a>
+                            </li>
+                        </ul>
+                        <!-- 搜索框 -->
+                        <div class="hd_search">
+                            <input type="text" placeholder="搜索音乐、歌单、MV、用户" class="hd_search_input">
+                            <button class="hd_search_icon"><img src="./images/放大镜.png" alt="搜索"></button>
+                        </div>
+                        <!-- 登录框 -->
+                        <div class="hd_opt">
+                            <div class="hd_login">
+                                <span class="hd_top_login"><a href="#">登录</a></span>
+                                <div class="hd_login_vip">
+                                    <a href="#" class="hd_search_vip ">开通VIP</a>
+                                    <!-- <ul class="select_choose">
+                                        <a class="select_item">开通绿钻豪华版</a>
+                                        <a class="select_item">开通付费包</a>
+                                    </ul> -->
+                                </div>
+                                <div class="hd_login_pay">
+                                    <a href="#" class="hd_search_pay">充值</a>
+                                    <!-- <ul class="select_pay">
+                                        <a class="select_item">购买乐币</a>
+                                        <a class="select_item">购买饭票</a>
+                                    </ul> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 导航栏底部 -->
+                    <div class="hd_bottom">
+                        <ul class="subnav">
+                            <li class="subnav_item"><a href="#">首页</a></li>
+                            <li class="subnav_item"><a href="#">歌手</a></li>
+                            <li class="subnav_item"><a href="#">新碟</a></li>
+                            <li class="subnav_item"><a href="#">排行榜</a></li>
+                            <li class="subnav_item"><a href="#">分类歌单</a></li>
+                            <li class="subnav_item"><a href="#">电台</a></li>
+                            <li class="subnav_item"><a href="#">MV</a></li>
+                            <li class="subnav_item"><a href="#">数字专辑</a></li>
+                            <li class="subnav_item"><a href="#">票务</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="center">
+                <!-- 歌单推荐 -->
+                <div class="sl_recommend">
+                    <div class="content1">
+                        <h1 class="sl_hd center_hd">歌单推荐</h1>
+                        <div class="sl_tab center_tab">
+                            <a class="sl_tab_item center_tab_item">全网热播</a>
+                            <a class="sl_tab_item center_tab_item">为你推荐</a>
+                            <a class="sl_tab_item center_tab_item">轻音乐</a>
+                            <a class="sl_tab_item center_tab_item">短视频热歌</a>
+                            <a class="sl_tab_item center_tab_item">官方歌单</a>
+                            <a class="sl_tab_item center_tab_item">情歌</a>
+                        </div>
+                        <div class="sl_list_bt bt_side">
+                            <span class="sl_bt_lift bt_side_lift"><i class="iconfont icon-shangyiye"></i></span>
+                            <span class="sl_bt_right bt_side_right"><i class="iconfont icon-xiayiye"></i></span>
+                        </div>
+                        <div class="sl_list_box play_list_box " id="sl_list_box">
+                            <ul class="sl_custom  play_custom">
+                                <li class="sl_custom_item  play_custom_item">
+                                    <div class="sl_cover play_cover">
+                                        <a href="#">
+                                            <img src="./images/sl01.png" alt="牧马城市">
+                                        </a>
+                                        <i class="sl_cover_mask play_cover_mask"></i>
+                                        <i class="sl_cover_icon play_cover_icon iconfont icon-playcircle-fill"></i>
+                                    </div>
+                                    <h4 class="sl_title play_title">
+                                        <span class="sl_title_txt play_title_txt">
+                                            <a href="#">粤语翻唱｜新声入耳、老味道走心</a>
+                                        </span>
+                                    </h4>
+                                    <div class="sl_num play_other">
+                                        播放量：60 万
+                                    </div>
+                                </li>
+                                <li class="sl_custom_item  play_custom_item">
+                                    <div class="sl_cover play_cover">
+                                        <a href="#">
+                                            <img src="./images/sl03.png" alt="粤语翻唱｜新声入耳、老味道走心">
+                                        </a>
+                                        <i class="sl_cover_mask play_cover_mask"></i>
+                                        <i class="sl_cover_icon play_cover_icon iconfont icon-playcircle-fill"></i>
+                                    </div>
+                                    <h4 class="sl_title play_title">
+                                        <span class="sl_title_txt play_title_txt">
+                                            <a href="#">粤语翻唱｜新声入耳、老味道走心</a>
+                                        </span>
+                                    </h4>
+                                    <div class="sl_num play_other">
+                                        播放量：60 万
+                                    </div>
+                                </li>
+                                <li class="sl_custom_item  play_custom_item">
+                                    <div class="sl_cover play_cover">
+                                        <a href="#">
+                                            <img src="./images/sl01.png" alt="粤语翻唱｜新声入耳、老味道走心">
+                                        </a>
+                                        <i class="sl_cover_mask play_cover_mask"></i>
+                                        <i class="sl_cover_icon play_cover_icon iconfont icon-playcircle-fill"></i>
+                                    </div>
+                                    <h4 class="sl_title play_title">
+                                        <span class="sl_title_txt play_title_txt">
+                                            <a href="#">粤语翻唱｜新声入耳、老味道走心</a>
+                                        </span>
+                                    </h4>
+                                    <div class="sl_num play_other">
+                                        播放量：60 万
+                                    </div>
+                                </li>
+                                <li class="sl_custom_item  play_custom_item">
+                                    <div class="sl_cover play_cover">
+                                        <a href="#">
+                                            <img src="./images/sl02.png" alt="粤语翻唱｜新声入耳、老味道走心">
+                                        </a>
+                                        <i class="sl_cover_mask play_cover_mask"></i>
+                                        <i class="sl_cover_icon play_cover_icon iconfont icon-playcircle-fill"></i>
+                                    </div>
+                                    <h4 class="sl_title play_title">
+                                        <span class="sl_title_txt play_title_txt">
+                                            <a href="#">粤语翻唱｜新声入耳、老味道走心</a>
+                                        </span>
+                                    </h4>
+                                    <div class="sl_num play_other">
+                                        播放量：60 万
+                                    </div>
+                                </li>
+                                <li class="sl_custom_item  play_custom_item">
+                                    <div class="sl_cover play_cover">
+                                        <a href="#">
+                                            <img src="./images/sl03.png" alt="粤语翻唱｜新声入耳、老味道走心">
+                                        </a>
+                                        <i class="sl_cover_mask play_cover_mask"></i>
+                                        <i class="sl_cover_icon play_cover_icon iconfont icon-playcircle-fill"></i>
+                                    </div>
+                                    <h4 class="sl_title play_title">
+                                        <span class="sl_title_txt play_title_txt">
+                                            <a href="#">粤语翻唱｜新声入耳、老味道走心</a>
+                                        </span>
+                                    </h4>
+                                    <div class="sl_num play_other">
+                                        播放量：60 万
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="sl_switch btn_switch">
+                                <a href="#" class="sl_switch_item btn_switch_item"></a>
+                                <a href="#" class="sl_switch_item btn_switch_item"></a>
+                                <a href="#" class="sl_switch_item btn_switch_item"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 新歌首发 -->
+                <div class="ns_debut">
+                    <div class="content2">
+                        <h1 class="ns_hd center_hd">新歌首发</h1>
+                        <a href="#" class="ns_btn ns_all_play content"><span class="ns_btn_icon">播放全部</span></a>
+                        <div class="ns_tab center_tab">
+                            <a class="ns_tab_item center_tab_item">最新</a>
+                            <a class="ns_tab_item center_tab_item">内地</a>
+                            <a class="ns_tab_item center_tab_item">港台</a>
+                            <a class="ns_tab_item center_tab_item">欧美</a>
+                            <a class="ns_tab_item center_tab_item">韩国</a>
+                            <a class="ns_tab_item center_tab_item">日本</a>
+                        </div>
+                        <div class="ns_list_bt bt_side">
+                            <span class="ns_bt_lift bt_side_lift"><i class="iconfont icon-shangyiye"></i></span>
+                            <span class="ns_bt_right bt_side_right"><i class="iconfont icon-xiayiye"></i></span>
+                        </div>
+                        <ul class="nslist content">
+                            <li class="nslist_item">
+                                <div class="nslist_item_box">
+                                    <a href="#" class="nslist_mod_cover">
+                                        <img src="./images/ns_01.jpg" alt="牵挂">
+                                        <i class="mod_cover_mask"></i>
+                                        <i class="mod_cover_icon_play iconfont icon-playcircle-fill"></i>
+                                    </a>
+                                    <div class="nslist_cont">
+                                        <h3 class="nslist_song">大鱼</h3>
+                                        <p class="nslist_autor">周深</p>
+                                    </div>
+                                    <div class="nslist_time">03:30</div>
+                                </div>
+                            </li>
+                            <li class="nslist_item">
+                                <div class="nslist_item_box">
+                                    <a href="#" class="nslist_mod_cover">
+                                        <img src="./images/ns_03.jpg" alt="牵挂">
+                                        <i class="mod_cover_mask"></i>
+                                        <i class="mod_cover_icon_play iconfont icon-playcircle-fill"></i>
+                                    </a>
+                                    <div class="nslist_cont">
+                                        <h3 class="nslist_song">大鱼</h3>
+                                        <p class="nslist_autor">周深</p>
+                                    </div>
+                                    <div class="nslist_time">03:30</div>
+                                </div>
+                            </li>
+                            <li class="nslist_item">
+                                <div class="nslist_item_box">
+                                    <a href="#" class="nslist_mod_cover">
+                                        <img src="./images/ns_02.jpg" alt="牵挂">
+                                        <i class="mod_cover_mask"></i>
+                                        <i class="mod_cover_icon_play iconfont icon-playcircle-fill"></i>
+                                    </a>
+                                    <div class="nslist_cont">
+                                        <h3 class="nslist_song">大鱼</h3>
+                                        <p class="nslist_autor">周深</p>
+                                    </div>
+                                    <div class="nslist_time">03:30</div>
+                                </div>
+                            </li>
+                            <li class="nslist_item">
+                                <div class="nslist_item_box">
+                                    <a href="#" class="nslist_mod_cover">
+                                        <img src="./images/ns_01.jpg" alt="牵挂">
+                                        <i class="mod_cover_mask"></i>
+                                        <i class="mod_cover_icon_play iconfont icon-playcircle-fill"></i>
+                                    </a>
+                                    <div class="nslist_cont">
+                                        <h3 class="nslist_song">大鱼</h3>
+                                        <p class="nslist_autor">周深</p>
+                                    </div>
+                                    <div class="nslist_time">03:30</div>
+                                </div>
+                            </li>
+                            <li class="nslist_item">
+                                <div class="nslist_item_box">
+                                    <a href="#" class="nslist_mod_cover">
+                                        <img src="./images/ns_03.jpg" alt="牵挂">
+                                        <i class="mod_cover_mask"></i>
+                                        <i class="mod_cover_icon_play iconfont icon-playcircle-fill"></i>
+                                    </a>
+                                    <div class="nslist_cont">
+                                        <h3 class="nslist_song">大鱼</h3>
+                                        <p class="nslist_autor">周深</p>
+                                    </div>
+                                    <div class="nslist_time">03:30</div>
+                                </div>
+                            </li>
+                            <li class="nslist_item">
+                                <div class="nslist_item_box">
+                                    <a href="#" class="nslist_mod_cover">
+                                        <img src="./images/ns_02.jpg" alt="牵挂">
+                                        <i class="mod_cover_mask"></i>
+                                        <i class="mod_cover_icon_play iconfont icon-playcircle-fill"></i>
+                                    </a>
+                                    <div class="nslist_cont">
+                                        <h3 class="nslist_song">大鱼</h3>
+                                        <p class="nslist_autor">周深</p>
+                                    </div>
+                                    <div class="nslist_time">03:30</div>
+                                </div>
+                            </li>
+                            <li class="nslist_item">
+                                <div class="nslist_item_box">
+                                    <a href="#" class="nslist_mod_cover">
+                                        <img src="./images/ns_01.jpg" alt="牵挂">
+                                        <i class="mod_cover_mask"></i>
+                                        <i class="mod_cover_icon_play iconfont icon-playcircle-fill"></i>
+                                    </a>
+                                    <div class="nslist_cont">
+                                        <h3 class="nslist_song">大鱼</h3>
+                                        <p class="nslist_autor">周深</p>
+                                    </div>
+                                    <div class="nslist_time">03:30</div>
+                                </div>
+                            </li>
+                            <li class="nslist_item">
+                                <div class="nslist_item_box">
+                                    <a href="#" class="nslist_mod_cover">
+                                        <img src="./images/ns_02.jpg" alt="牵挂">
+                                        <i class="mod_cover_mask"></i>
+                                        <i class="mod_cover_icon_play iconfont icon-playcircle-fill"></i>
+                                    </a>
+                                    <div class="nslist_cont">
+                                        <h3 class="nslist_song">大鱼</h3>
+                                        <p class="nslist_autor">周深</p>
+                                    </div>
+                                    <div class="nslist_time">03:30</div>
+                                </div>
+                            </li>
+                            <li class="nslist_item">
+                                <div class="nslist_item_box">
+                                    <a href="#" class="nslist_mod_cover">
+                                        <img src="./images/ns_03.jpg" alt="牵挂">
+                                        <i class="mod_cover_mask"></i>
+                                        <i class="mod_cover_icon_play iconfont icon-playcircle-fill"></i>
+                                    </a>
+                                    <div class="nslist_cont">
+                                        <h3 class="nslist_song">大鱼</h3>
+                                        <p class="nslist_autor">周深</p>
+                                    </div>
+                                    <div class="nslist_time">03:30</div>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="ns_switch btn_switch content">
+                            <a href="#" class="ns_switch_item btn_switch_item"></a>
+                            <a href="#" class="ns_switch_item btn_switch_item"></a>
+                            <a href="#" class="ns_switch_item btn_switch_item"></a>
+                            <a href="#" class="ns_switch_item btn_switch_item"></a>
+                            <a href="#" class="ns_switch_item btn_switch_item"></a>
+                            <a href="#" class="ns_switch_item btn_switch_item"></a>
+                            <a href="#" class="ns_switch_item btn_switch_item"></a>
+                            <a href="#" class="ns_switch_item btn_switch_item"></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- 精彩推荐 -->
+                <div class="hight_recommend">
+                    <div class="content2">
+                        <h1 class="height_hd center_hd">精彩推荐</h1>
+                        <div class="height_list_bt bt_side">
+                            <span class="height_bt_lift bt_side_lift"><i class="iconfont icon-shangyiye"></i></span>
+                            <span class="height_bt_right bt_side_right"><i class="iconfont icon-xiayiye"></i></span>
+                        </div>
+                        <ul class="hightlist content">
+                            <li class="hightlist_item">
+                                <div class="hightlist_item_box">
+                                    <a href="#" class="hightlist_mod_cover">
+                                        <img src="./images/height01.gif" alt="">
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="hightlist_item">
+                                <div class="hightlist_item_box">
+                                    <a href="#" class="hightlist_mod_cover">
+                                        <img src="./images/height03.jpg" alt="">
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="ns_switch btn_switch content">
+                            <a href="#" class="ns_switch_item btn_switch_item"></a>
+                            <a href="#" class="ns_switch_item btn_switch_item"></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- 新碟首发 -->
+                <div class="nd_debut">
+                    <div class="content3">
+                        <h1 class="nd_hd center_hd">新碟首发</h1>
+                        <a href="#" class="nd_btn nd_mall content">
+                            <span class="nd_more_icon ">更多<span class="iconfont icon-gengduo"></span></span>
+                        </a>
+                        <div class="nd_tab center_tab">
+                            <a class="nd_tab_item center_tab_item">内地</a>
+                            <a class="nd_tab_item center_tab_item">港台</a>
+                            <a class="nd_tab_item center_tab_item">欧美</a>
+                            <a class="nd_tab_item center_tab_item">韩国</a>
+                            <a class="nd_tab_item center_tab_item">日本</a>
+                            <a class="nd_tab_item center_tab_item">其他</a>
+                        </div>
+                        
+                        <div class="nd_list_bt bt_side">
+                            <span class="nd_bt_lift bt_side_lift"><i class="iconfont icon-shangyiye"></i></span>
+                            <span class="nd_bt_right bt_side_right"><i class="iconfont icon-xiayiye"></i></span>
+                        </div>
+                        <div class="nd_list_box play_list_box" id="nd_list_box">
+                            <ul class="nd_custom play_custom ">
+                                <li class="nd_custom_item play_custom_item">
+                                    <div class="nd_cover play_cover">
+                                        <a href="#">
+                                            <img src="./images/nd_02.jpg" alt="牧马城市">
+                                        </a>
+                                        <i class="nd_cover_mask play_cover_mask"></i>
+                                        <i class="nd_cover_icon play_cover_icon iconfont icon-playcircle-fill"></i>
+                                    </div>
+                                    <h4 class="nd_title play_title">
+                                        <span class="nd_title_txt play_title_txt">
+                                            <a href="#">牧马城市</a>
+                                        </span>
+                                    </h4>
+                                    <div class="nd_num play_other">
+                                        毛不易
+                                    </div>
+                                </li>
+                                <li class="nd_custom_item play_custom_item">
+                                    <div class="nd_cover play_cover">
+                                        <a href="#">
+                                            <img src="./images/nd_01.jpg" alt="我们的故事">
+                                        </a>
+                                        <i class="nd_cover_mask play_cover_mask"></i>
+                                        <i class="nd_cover_icon play_cover_icon iconfont icon-playcircle-fill"></i>
+                                    </div>
+                                    <h4 class="nd_title play_title">
+                                        <span class="nd_title_txt play_title_txt">
+                                            <a href="#">我们的故事</a>
+                                        </span>
+                                    </h4>
+                                    <div class="nd_author play_other">
+                                        刘芙妮
+                                    </div>
+                                </li>
+                                <li class="nd_custom_item play_custom_item">
+                                    <div class="nd_cover play_cover">
+                                        <a href="#">
+                                            <img src="./images/nd_02.jpg" alt="牧马城市">
+                                        </a>
+                                        <i class="nd_cover_mask play_cover_mask"></i>
+                                        <i class="nd_cover_icon play_cover_icon iconfont icon-playcircle-fill"></i>
+                                    </div>
+                                    <h4 class="nd_title play_title">
+                                        <span class="nd_title_txt play_title_txt">
+                                            <a href="#">牧马城市</a>
+                                        </span>
+                                    </h4>
+                                    <div class="nd_num play_other">
+                                        毛不易
+                                    </div>
+                                </li>
+                                <li class="nd_custom_item play_custom_item">
+                                    <div class="nd_cover play_cover">
+                                        <a href="#">
+                                            <img src="./images/nd_03.jpg" alt="月光">
+                                        </a>
+                                        <i class="nd_cover_mask play_cover_mask"></i>
+                                        <i class="nd_cover_icon play_cover_icon iconfont icon-playcircle-fill"></i>
+                                    </div>
+                                    <h4 class="nd_title play_title">
+                                        <span class="nd_title_txt play_title_txt">
+                                            <a href="#">月光</a>
+                                        </span>
+                                    </h4>
+                                    <div class="nd_num play_other">
+                                        胡彦斌
+                                    </div>
+                                </li>
+                                <li class="nd_custom_item play_custom_item">
+                                    <div class="nd_cover play_cover">
+                                        <a href="#">
+                                            <img src="./images/nd_04.jpg" alt="老男孩">
+                                        </a>
+                                        <i class="nd_cover_mask play_cover_mask"></i>
+                                        <i class="nd_cover_icon play_cover_icon iconfont icon-playcircle-fill"></i>
+                                    </div>
+                                    <h4 class="nd_title play_title">
+                                        <span class="nd_title_txt play_title_txt">
+                                            <a href="#">老男孩</a>
+                                        </span>
+                                    </h4>
+                                    <div class="nd_num play_other">
+                                        筷子兄弟
+                                    </div>
+                                </li>
+                                <li class="nd_custom_item play_custom_item">
+                                    <div class="nd_cover play_cover">
+                                        <a href="#">
+                                            <img src="./images/nd_02.jpg" alt="牧马城市">
+                                        </a>
+                                        <i class="nd_cover_mask play_cover_mask"></i>
+                                        <i class="nd_cover_icon play_cover_icon iconfont icon-playcircle-fill"></i>
+                                    </div>
+                                    <h4 class="nd_title play_title">
+                                        <span class="nd_title_txt play_title_txt">
+                                            <a href="#">牧马城市</a>
+                                        </span>
+                                    </h4>
+                                    <div class="nd_num play_other">
+                                        毛不易
+                                    </div>
+                                </li>
+                                <li class="nd_custom_item play_custom_item">
+                                    <div class="nd_cover play_cover">
+                                        <a href="#">
+                                            <img src="./images/nd_01.jpg" alt="我们的故事">
+                                        </a>
+                                        <i class="nd_cover_mask play_cover_mask"></i>
+                                        <i class="nd_cover_icon play_cover_icon iconfont icon-playcircle-fill"></i>
+                                    </div>
+                                    <h4 class="nd_title play_title">
+                                        <span class="nd_title_txt play_title_txt">
+                                            <a href="#">我们的故事</a>
+                                        </span>
+                                    </h4>
+                                    <div class="nd_author play_other">
+                                        刘芙妮
+                                    </div>
+                                </li>
+                                <li class="nd_custom_item play_custom_item">
+                                    <div class="nd_cover play_cover">
+                                        <a href="#">
+                                            <img src="./images/nd_02.jpg" alt="牧马城市">
+                                        </a>
+                                        <i class="nd_cover_mask play_cover_mask"></i>
+                                        <i class="nd_cover_icon play_cover_icon iconfont icon-playcircle-fill"></i>
+                                    </div>
+                                    <h4 class="nd_title play_title">
+                                        <span class="nd_title_txt play_title_txt">
+                                            <a href="#">牧马城市</a>
+                                        </span>
+                                    </h4>
+                                    <div class="nd_num play_other">
+                                        毛不易
+                                    </div>
+                                </li>
+                                <li class="nd_custom_item play_custom_item">
+                                    <div class="nd_cover play_cover">
+                                        <a href="#">
+                                            <img src="./images/nd_03.jpg" alt="月光">
+                                        </a>
+                                        <i class="nd_cover_mask play_cover_mask"></i>
+                                        <i class="nd_cover_icon play_cover_icon iconfont icon-playcircle-fill"></i>
+                                    </div>
+                                    <h4 class="nd_title play_title">
+                                        <span class="nd_title_txt play_title_txt">
+                                            <a href="#">月光</a>
+                                        </span>
+                                    </h4>
+                                    <div class="nd_num play_other">
+                                        胡彦斌
+                                    </div>
+                                </li>
+                                <li class="nd_custom_item play_custom_item">
+                                    <div class="nd_cover play_cover">
+                                        <a href="#">
+                                            <img src="./images/nd_04.jpg" alt="老男孩">
+                                        </a>
+                                        <i class="nd_cover_mask play_cover_mask"></i>
+                                        <i class="nd_cover_icon play_cover_icon iconfont icon-playcircle-fill"></i>
+                                    </div>
+                                    <h4 class="nd_title play_title">
+                                        <span class="nd_title_txt play_title_txt">
+                                            <a href="#">老男孩</a>
+                                        </span>
+                                    </h4>
+                                    <div class="nd_num play_other">
+                                        筷子兄弟
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="nd_switch btn_switch">
+                            <a href="#" class="nd_switch_item btn_switch_item"></a>
+                            <a href="#" class="nd_switch_item btn_switch_item"></a>
+                            <a href="#" class="nd_switch_item btn_switch_item"></a>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- 排行榜 -->
+                <div class="top">
+                    <div class="content4">
+                        <h1 class="top_hd center_hd">排行榜</h1>
+                        <a href="#" class="top_btn top_mall">
+                            <span class="top_btn_icon ">更多<span class="iconfont icon-gengduo"></span></span>
+                        </a>
+                        <ul class="toplist_list content">
+                            <li class="toplist_item">
+                                <div class="toplist_box">
+                                    <div class="toplist_bg"></div>
+                                    <i class="top_icon iconfont icon-playcircle-fill"></i>
+                                    <!-- <i class="toplist_line"></i> -->
+                                    <h4 class="toplist_name">巅峰榜</h4>
+                                    <h3 class="toplist_title">热歌</h3>
+                                    <ul class="toplist_songlist">
+                                        <li class="toplist_song">
+                                            <div class="toplist_song_num">1</div>
+                                            <div class="toplist_song_name"><a href="#">牧马城市好的饭卡回家第三方的地方</a></div>
+                                            <div class="toplist_song_artist"><a href="#">毛不易</a></div>
+                                        </li>
+                                        <li class="toplist_song">
+                                            <div class="toplist_song_num">2</div>
+                                            <div class="toplist_song_name"><a href="#">泡沫</a></div>
+                                            <div class="toplist_song_artist"><a href="#">邓紫棋</a></div>
+                                        </li>
+                                        <li class="toplist_song">
+                                            <div class="toplist_song_num">3</div>
+                                            <div class="toplist_song_name"><a href="#">假如爱有天意</a></div>
+                                            <div class="toplist_song_artist"><a href="#">李健</a></div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="toplist_item">
+                                <div class="toplist_box">
+                                    <div class="toplist_bg"></div>
+                                    <i class="top_icon iconfont icon-playcircle-fill"></i>
+                                    <!-- <i class="toplist_line"></i> -->
+                                    <h4 class="toplist_name">巅峰榜</h4>
+                                    <h3 class="toplist_title">热歌</h3>
+                                    <ul class="toplist_songlist">
+                                        <li class="toplist_song">
+                                            <div class="toplist_song_num">1</div>
+                                            <div class="toplist_song_name"><a href="#">牧马城市好的饭卡回家第三方的地方</a></div>
+                                            <div class="toplist_song_artist"><a href="#">毛不易</a></div>
+                                        </li>
+                                        <li class="toplist_song">
+                                            <div class="toplist_song_num">2</div>
+                                            <div class="toplist_song_name"><a href="#">泡沫</a></div>
+                                            <div class="toplist_song_artist"><a href="#">邓紫棋</a></div>
+                                        </li>
+                                        <li class="toplist_song">
+                                            <div class="toplist_song_num">3</div>
+                                            <div class="toplist_song_name"><a href="#">假如爱有天意</a></div>
+                                            <div class="toplist_song_artist"><a href="#">李健</a></div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="toplist_item">
+                                <div class="toplist_box">
+                                    <div class="toplist_bg"></div>
+                                    <i class="top_icon iconfont icon-playcircle-fill"></i>
+                                    <!-- <i class="toplist_line"></i> -->
+                                    <h4 class="toplist_name">巅峰榜</h4>
+                                    <h3 class="toplist_title">热歌</h3>
+                                    <ul class="toplist_songlist">
+                                        <li class="toplist_song">
+                                            <div class="toplist_song_num">1</div>
+                                            <div class="toplist_song_name"><a href="#">牧马城市好的饭卡回家第三方的地方</a></div>
+                                            <div class="toplist_song_artist"><a href="#">毛不易</a></div>
+                                        </li>
+                                        <li class="toplist_song">
+                                            <div class="toplist_song_num">2</div>
+                                            <div class="toplist_song_name"><a href="#">泡沫</a></div>
+                                            <div class="toplist_song_artist"><a href="#">邓紫棋</a></div>
+                                        </li>
+                                        <li class="toplist_song">
+                                            <div class="toplist_song_num">3</div>
+                                            <div class="toplist_song_name"><a href="#">假如爱有天意</a></div>
+                                            <div class="toplist_song_artist"><a href="#">李健</a></div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="toplist_item">
+                                <div class="toplist_box">
+                                    <div class="toplist_bg"></div>
+                                    <i class="top_icon iconfont icon-playcircle-fill"></i>
+                                    <!-- <i class="toplist_line"></i> -->
+                                    <h4 class="toplist_name">巅峰榜</h4>
+                                    <h3 class="toplist_title">热歌</h3>
+                                    <ul class="toplist_songlist">
+                                        <li class="toplist_song">
+                                            <div class="toplist_song_num">1</div>
+                                            <div class="toplist_song_name"><a href="#">牧马城市好的饭卡回家第三方的地方</a></div>
+                                            <div class="toplist_song_artist"><a href="#">毛不易</a></div>
+                                        </li>
+                                        <li class="toplist_song">
+                                            <div class="toplist_song_num">2</div>
+                                            <div class="toplist_song_name"><a href="#">泡沫</a></div>
+                                            <div class="toplist_song_artist"><a href="#">邓紫棋</a></div>
+                                        </li>
+                                        <li class="toplist_song">
+                                            <div class="toplist_song_num">3</div>
+                                            <div class="toplist_song_name"><a href="#">假如爱有天意</a></div>
+                                            <div class="toplist_song_artist"><a href="#">李健</a></div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="toplist_item">
+                                <div class="toplist_box">
+                                    <div class="toplist_bg"></div>
+                                    <i class="top_icon iconfont icon-playcircle-fill"></i>
+                                    <!-- <i class="toplist_line"></i> -->
+                                    <h4 class="toplist_name">巅峰榜</h4>
+                                    <h3 class="toplist_title">热歌</h3>
+                                    <ul class="toplist_songlist">
+                                        <li class="toplist_song">
+                                            <div class="toplist_song_num">1</div>
+                                            <div class="toplist_song_name"><a href="#">牧马城市好的饭卡回家第三方的地方</a></div>
+                                            <div class="toplist_song_artist"><a href="#">毛不易</a></div>
+                                        </li>
+                                        <li class="toplist_song">
+                                            <div class="toplist_song_num">2</div>
+                                            <div class="toplist_song_name"><a href="#">泡沫</a></div>
+                                            <div class="toplist_song_artist"><a href="#">邓紫棋</a></div>
+                                        </li>
+                                        <li class="toplist_song">
+                                            <div class="toplist_song_num">3</div>
+                                            <div class="toplist_song_name"><a href="#">假如爱有天意</a></div>
+                                            <div class="toplist_song_artist"><a href="#">李健</a></div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- MV -->
+                <div class="mv">
+                    <div class="content5">
+                        <h1 class="mv_hd center_hd">MV</h1>
+                        <a href="#" class="mv_btn nd_mall content">
+                            <span class="mv_more_icon ">更多<span class="iconfont icon-gengduo"></span></span>
+                        </a>
+                        <div class="mv_tab center_tab">
+                            <a class="mv_tab_item center_tab_item">内地</a>
+                            <a class="mv_tab_item center_tab_item">港台</a>
+                            <a class="mv_tab_item center_tab_item">欧美</a>
+                            <a class="mv_tab_item center_tab_item">韩国</a>
+                            <a class="mv_tab_item center_tab_item">日本</a>
+                        </div>
+                        <div class="mv_list_bt bt_side">
+                            <span class="mv_bt_lift bt_side_lift"><i class="iconfont icon-shangyiye"></i></span>
+                            <span class="mv_bt_right bt_side_right"><i class="iconfont icon-xiayiye"></i></span>
+                        </div>
+                        <div class="mv_list_box play_list_box" id="mv_list_box">
+                            <ul class="mv_custom play_custom ">
+                                <li class="mv_custom_item play_custom_item">
+                                    <div class="mv_item_box">
+                                        <div class="mv_cover play_cover">
+                                            <a href="#">
+                                                <img src="./images/mv_01.jpg" alt="">
+                                            </a>
+                                            <i class="mv_cover_mask play_cover_mask"></i>
+                                            <i class="mv_cover_icon play_cover_icon iconfont icon-playcircle-fill"></i>
+                                        </div>
+                                        <h4 class="mv_name play_title">
+                                            <span class="mv_name_txt play_title_txt">
+                                                <a href="#">牧马城市</a>
+                                            </span>
+                                        </h4>
+                                        <div class="mv_singer play_other">
+                                            毛不易
+                                        </div>
+                                        <div class="mv_view">
+                                            <span> <i class="mv_view_icon iconfont icon-sheyingji"></i></span>
+                                            <span>64.5万</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="mv_custom_item play_custom_item">
+                                    <div class="mv_item_box">
+                                        <div class="mv_cover play_cover">
+                                            <a href="#">
+                                                <img src="./images/mv_02.jpg" alt="">
+                                            </a>
+                                            <i class="mv_cover_mask play_cover_mask"></i>
+                                            <i class="mv_cover_icon play_cover_icon iconfont icon-playcircle-fill"></i>
+                                        </div>
+                                        <h4 class="mv_name play_title">
+                                            <span class="mv_name_txt play_title_txt">
+                                                <a href="#">牧马城市</a>
+                                            </span>
+                                        </h4>
+                                        <div class="mv_singer play_other">
+                                            毛不易
+                                        </div>
+                                        <div class="mv_view">
+                                            <span> <i class="mv_view_icon iconfont icon-sheyingji"></i></span>
+                                            <span>64.5万</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="mv_custom_item play_custom_item">
+                                    <div class="mv_item_box">
+                                        <div class="mv_cover play_cover">
+                                            <a href="#">
+                                                <img src="./images/mv_02.jpg" alt="">
+                                            </a>
+                                            <i class="mv_cover_mask play_cover_mask"></i>
+                                            <i class="mv_cover_icon play_cover_icon iconfont icon-playcircle-fill"></i>
+                                        </div>
+                                        <h4 class="mv_name play_title">
+                                            <span class="mv_name_txt play_title_txt">
+                                                <a href="#">牧马城市</a>
+                                            </span>
+                                        </h4>
+                                        <div class="mv_singer play_other">
+                                            毛不易
+                                        </div>
+                                        <div class="mv_view">
+                                            <span> <i class="mv_view_icon iconfont icon-sheyingji"></i></span>
+                                            <span>64.5万</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="mv_custom_item play_custom_item">
+                                    <div class="mv_item_box">
+                                        <div class="mv_cover play_cover">
+                                            <a href="#">
+                                                <img src="./images/mv_03.jpg" alt="">
+                                            </a>
+                                            <i class="mv_cover_mask play_cover_mask"></i>
+                                            <i class="mv_cover_icon play_cover_icon iconfont icon-playcircle-fill"></i>
+                                        </div>
+                                        <h4 class="mv_name play_title">
+                                            <span class="mv_name_txt play_title_txt">
+                                                <a href="#">牧马城市</a>
+                                            </span>
+                                        </h4>
+                                        <div class="mv_singer play_other">
+                                            毛不易
+                                        </div>
+                                        <div class="mv_view">
+                                            <span> <i class="mv_view_icon iconfont icon-sheyingji"></i></span>
+                                            <span>64.5万</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="mv_custom_item play_custom_item">
+                                    <div class="mv_item_box">
+                                        <div class="mv_cover play_cover">
+                                            <a href="#">
+                                                <img src="./images/mv_04.jpg" alt="">
+                                            </a>
+                                            <i class="mv_cover_mask play_cover_mask"></i>
+                                            <i class="mv_cover_icon play_cover_icon iconfont icon-playcircle-fill"></i>
+                                        </div>
+                                        <h4 class="mv_name play_title">
+                                            <span class="mv_name_txt play_title_txt">
+                                                <a href="#">牧马城市</a>
+                                            </span>
+                                        </h4>
+                                        <div class="mv_singer play_other">
+                                            毛不易
+                                        </div>
+                                        <div class="mv_view">
+                                            <span> <i class="mv_view_icon iconfont icon-sheyingji"></i></span>
+                                            <span>64.5万</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="mv_custom_item play_custom_item">
+                                    <div class="mv_item_box">
+                                        <div class="mv_cover play_cover">
+                                            <a href="#">
+                                                <img src="./images/mv_05.jpg" alt="">
+                                            </a>
+                                            <i class="mv_cover_mask play_cover_mask"></i>
+                                            <i class="mv_cover_icon play_cover_icon iconfont icon-playcircle-fill"></i>
+                                        </div>
+                                        <h4 class="mv_name play_title">
+                                            <span class="mv_name_txt play_title_txt">
+                                                <a href="#">牧马城市</a>
+                                            </span>
+                                        </h4>
+                                        <div class="mv_singer play_other">
+                                            毛不易
+                                        </div>
+                                        <div class="mv_view">
+                                            <span> <i class="mv_view_icon iconfont icon-sheyingji"></i></span>
+                                            <span>64.5万</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="mv_custom_item play_custom_item">
+                                    <div class="mv_item_box">
+                                        <div class="mv_cover play_cover">
+                                            <a href="#">
+                                                <img src="./images/mv_04.jpg" alt="">
+                                            </a>
+                                            <i class="mv_cover_mask play_cover_mask"></i>
+                                            <i class="mv_cover_icon play_cover_icon iconfont icon-playcircle-fill"></i>
+                                        </div>
+                                        <h4 class="mv_name play_title">
+                                            <span class="mv_name_txt play_title_txt">
+                                                <a href="#">牧马城市</a>
+                                            </span>
+                                        </h4>
+                                        <div class="mv_singer play_other">
+                                            毛不易
+                                        </div>
+                                        <div class="mv_view">
+                                            <span> <i class="mv_view_icon iconfont icon-sheyingji"></i></span>
+                                            <span>64.5万</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="mv_custom_item play_custom_item">
+                                    <div class="mv_item_box">
+                                        <div class="mv_cover play_cover">
+                                            <a href="#">
+                                                <img src="./images/mv_03.jpg" alt="">
+                                            </a>
+                                            <i class="mv_cover_mask play_cover_mask"></i>
+                                            <i class="mv_cover_icon play_cover_icon iconfont icon-playcircle-fill"></i>
+                                        </div>
+                                        <h4 class="mv_name play_title">
+                                            <span class="mv_name_txt play_title_txt">
+                                                <a href="#">牧马城市</a>
+                                            </span>
+                                        </h4>
+                                        <div class="mv_singer play_other">
+                                            毛不易
+                                        </div>
+                                        <div class="mv_view">
+                                            <span> <i class="mv_view_icon iconfont icon-sheyingji"></i></span>
+                                            <span>64.5万</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="mv_custom_item play_custom_item">
+                                    <div class="mv_item_box">
+                                        <div class="mv_cover play_cover">
+                                            <a href="#">
+                                                <img src="./images/mv_02.jpg" alt="">
+                                            </a>
+                                            <i class="mv_cover_mask play_cover_mask"></i>
+                                            <i class="mv_cover_icon play_cover_icon iconfont icon-playcircle-fill"></i>
+                                        </div>
+                                        <h4 class="mv_name play_title">
+                                            <span class="mv_name_txt play_title_txt">
+                                                <a href="#">牧马城市</a>
+                                            </span>
+                                        </h4>
+                                        <div class="mv_singer play_other">
+                                            毛不易
+                                        </div>
+                                        <div class="mv_view">
+                                            <span> <i class="mv_view_icon iconfont icon-sheyingji"></i></span>
+                                            <span>64.5万</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="mv_custom_item play_custom_item">
+                                    <div class="mv_item_box">
+                                        <div class="mv_cover play_cover">
+                                            <a href="#">
+                                                <img src="./images/mv_01.jpg" alt="">
+                                            </a>
+                                            <i class="mv_cover_mask play_cover_mask"></i>
+                                            <i class="mv_cover_icon play_cover_icon iconfont icon-playcircle-fill"></i>
+                                        </div>
+                                        <h4 class="mv_name play_title">
+                                            <span class="mv_name_txt play_title_txt">
+                                                <a href="#">牧马城市</a>
+                                            </span>
+                                        </h4>
+                                        <div class="mv_singer play_other">
+                                            毛不易
+                                        </div>
+                                        <div class="mv_view">
+                                            <span> <i class="mv_view_icon iconfont icon-sheyingji"></i></span>
+                                            <span>64.5万</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mv_switch btn_switch">
+                            <a href="#" class="mv_switch_item btn_switch_item"></a>
+                            <a href="#" class="mv_switch_item btn_switch_item"></a>
+                            <a href="#" class="mv_switch_item btn_switch_item"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 底部 -->
+            <div class="footer">
+                <div class="content6">
+                    <div class="footer_info">
+                        <div class="footer_download">
+                            <h3>下载QQ音乐客户端</h3>
+                            <ul class="footer_download_list">
+                                <li class="footer_download_list_item">
+                                    <a href="#" class="footer_down">
+                                        <i class="iconfont icon-windows-fill "></i>
+                                        <span class="footer_txt">PC端</span>
+                                    </a>
+                                </li>
+                                <li class="footer_download_list_item">
+                                    <a href="#" class="footer_down">
+                                        <i class="iconfont icon-mac "></i>
+                                        <span class="footer_txt">Mac端</span>
+                                    </a>
+                                </li>
+                                <li class="footer_download_list_item">
+                                    <a href="#" class="footer_down">
+                                        <i class="iconfont icon-android"></i>
+                                        <span class="footer_txt">Android端</span>
+                                    </a>
+                                </li>
+                                <li class="footer_download_list_item">
+                                    <a href="#" class="footer_down">
+                                        <i class="icon-iphone iconfont "></i>
+                                        <span class="footer_txt">iPhone端</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="footer_product">
+                            <h3>特色产品</h3>
+                            <ul class="footer_product_list">
+                                <li class="footer_product_list_item">
+                                    <a href="#" class="footer_down">
+                                        <i class="iconfont icon-windows-fill "></i>
+                                        <span class="footer_txt">全民K歌</span>
+                                    </a>
+                                </li>
+                                <li class="footer_product_list_item">
+                                    <a href="#" class="footer_down">
+                                        <i class="iconfont icon-mac "></i>
+                                        <span class="footer_txt">SperSound</span>
+                                    </a>
+                                </li>
+                                <li class="footer_product_list_item">
+                                    <a href="#" class="footer_down">
+                                        <i class="iconfont icon-android"></i>
+                                        <span class="footer_txt">QPlay</span>
+                                    </a>
+                                </li>
+                                <li class="footer_product_list_item">
+                                    <a href="#" class="footer_down">
+                                        <i class="icon-iphone iconfont "></i>
+                                        <span class="footer_txt">Fan直播伴侣</span>
+                                    </a>
+                                </li>
+                                <li class="footer_product_list_item">
+                                    <a href="#" class="footer_down">
+                                        <span class="footer_txt">车载互联</span>
+                                    </a>
+                                </li>
+                                <li class="footer_product_list_item">
+                                    <a href="#" class="footer_down">
+                                        <span class="footer_txt">QQ演出</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class=""></div>
+                        <div class="footer_link">
+                            <h3>合作链接</h3>
+                            <ul class="footer_link_list">
+                                <li class="footer_link_list_item">
+                                    <a href="#" class="footer_down">
+                                        <span class="footer_txt">酷我音乐</span>
+                                    </a>
+                                </li>
+                                <li class="footer_link_list_item">
+                                    <a href="#" class="footer_down">
+                                        <span class="footer_txt">酷我听书</span>
+                                    </a>
+                                </li>
+                                <li class="footer_link_list_item">
+                                    <a href="#" class="footer_down">
+                                        <span class="footer_txt">最新版QQ</span>
+                                    </a>
+                                </li>
+                                <li class="footer_link_list_item">
+                                    <a href="#" class="footer_down">
+                                        <span class="footer_txt">酷我音乐</span>
+                                    </a>
+                                </li>
+                                <li class="footer_link_list_item">
+                                    <a href="#" class="footer_down">
+                                        <span class="footer_txt">酷我听书</span>
+                                    </a>
+                                </li>
+                                <li class="footer_link_list_item">
+                                    <a href="#" class="footer_down">
+                                        <span class="footer_txt">最新版QQ</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="footer_platform">
+                            <h3>开放平台</h3>
+                            <ul class="footer_platform_list">
+                                <li class="footer_platform_item">
+                                    <a href="#" class="footer_down">
+                                        <span class="footer_txt">QQ音乐</span>
+                                    </a>  
+                                </li>
+                                <li class="footer_platform_item">
+                                    <a href="#" class="footer_down">
+                                        <span class="footer_txt">腾讯音乐人</span>
+                                    </a>    
+                                </li>
+                                <li class="footer_platform_item">
+                                    <a href="#" class="footer_down">
+                                        <span class="footer_txt">Q音乐推</span>
+                                    </a>    
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="footer_group">
+                            <h3>开放平台</h3>
+                            <ul class="footer_group_list">
+                                <li class="footer_group_item">
+                                    <a href="#" class="footer_down">
+                                        <span class="footer_txt">TME集团官网</span>
+                                    </a>    
+                                </li>
+                                <li class="footer_group_item">
+                                    <a href="#" class="footer_down">
+                                        <span class="footer_txt">腾讯音乐</span>
+                                    </a>    
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="footer_copyright">
+                            <p>
+                                <a href="#">关于腾讯</a>
+                                <a href="#">AboutTencent</a>
+                                <a href="#">服务条款</a>
+                                <a href="#">用户协议</a>
+                                <a href="#">隐私政策</a>
+                                <a href="#">权利声明</a>
+                                <a href="#">广告服务</a>
+                                <a href="#">客户中心</a>
+                            </p>
+                            <p>Copyright © 1998 - 2021Tencent.<a href="#">All Rights Reserved.</a></p>
+                            <p>
+                                腾讯公司
+                                <a target="_blank" href="#" >粤网文[2020]3396-195号</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>   
+    </div>
+</body>
+<script src="./js/index.js"></script>
+</html>

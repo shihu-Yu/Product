@@ -1,0 +1,1 @@
+export const CHANGE_CATEGORY_ACTIVE = 'change_category_active'

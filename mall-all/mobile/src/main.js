@@ -16,6 +16,8 @@ Object.keys(filters).forEach(key=>Vue.filter(key,filters[key]))
 //关闭生产环境模式更改提示
 Vue.config.productionTip = false
 
+
+
 new Vue({
   router,//配置router
   store,//配置store

@@ -340,12 +340,12 @@
                 var html = ''
                 var elevatorHtml = ''
                 for(var i =0;i<len;i++){
-                    html += `<div class="floor-swap1">
+                    html += `<div class="floor-swap1 clearfix">
                                 <a href="#" class="hd">
                                     <h2>F${list[i].num} ${list[i].title}</h2>
                                 </a>
                             </div>
-                            <div class="floor-product ">
+                            <div class="floor-product clearfix">
                                 <ul class="prouct-list clearfix">`
                     for(var j = 0,len1= list[i].products.length;j<len1;j++){
                         var product = list[i].products[j]

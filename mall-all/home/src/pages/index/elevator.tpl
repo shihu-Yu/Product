@@ -1,9 +1,4 @@
 {{#floors}}
-    <a href="javascript:;" class="elevator-item link">
-        <span class="elevator-item-num">F{{num}}</span>
-        <span class="elevator-item-text text-ellipsis">{{title}}</span>
-    </a>  
-
     <a href="javascript:;" class="elevator-item">
         <span class="elevator-item-num">F{{num}}</span>
         <span class="elevator-item-text text-ellipsis" >{{title}}</span>
